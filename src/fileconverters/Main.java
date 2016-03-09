@@ -2,6 +2,8 @@ package fileconverters;
 
 import fileconverters.IConstant;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import fileconverters.ccfinder.testClone;
 
@@ -29,6 +31,7 @@ public class Main {
 		System.out.println("GCFFileConverter (v. 0.1) ...");
 		String[] tools = {"ccfx", "simscan", "CPD", "ConQAT", "iClones", "Simian", "NiCad" };
 		System.out.println("Converting " + tools[Integer.valueOf(args[0].trim())-1] + " clone report into GCF format...");
+		File tempFile = null;
 		
 		if (args[0].trim().matches("1")) // ccfinder
 		{
@@ -40,14 +43,13 @@ public class Main {
 				System.exit(-1);
 			}
 			String strfile = args[1];
-			String output = new FileConverterFactory().createFileConverter(
-					IConstant.CCFINDER_RESULT_FILE).convert(new File(args[1]),
-					list);
+			String output = new FileConverterFactory().createFileConverter(IConstant.CCFINDER_RESULT_FILE).convert(new File(args[1]), list);
+			
 			String filename[] = args[1].trim().split("\\.");
-			saveConvertedFile("." + filename[0] + "temp.xml", output);
+			saveConvertedFile(filename[0] + "temp.xml", output);
 			ArrayList<String> strlist = new ArrayList<String>();
-			String filecontent = readConvertedFile("." + filename[0]
-					+ "temp.xml", strlist);
+			String filecontent = readConvertedFile(filename[0] + "temp.xml", strlist);
+			tempFile = new File(filename[0] + "temp.xml");
 			String GCFfile = "";
 			if (args.length == 2) {
 				GCFfile = converteToGCF(strlist);
@@ -72,10 +74,10 @@ public class Main {
 					IConstant.SIMSCAN_RESULT_FILE).convert(
 					new File(args[1].trim()), list);
 			String filename = args[2].trim();
-			saveConvertedFile("." + filename + "temp.xml", output);
+			saveConvertedFile(filename + "temp.xml", output);
 			ArrayList<String> strlist = new ArrayList<String>();
-			String filecontent = readConvertedFile("." + filename + "temp.xml",
-					strlist);
+			String filecontent = readConvertedFile(filename + "temp.xml", strlist);
+			tempFile = new File(filename + "temp.xml");
 			String GCFfile = "";
 			if (args.length == 3) {
 				GCFfile = converteToGCF(strlist);
@@ -107,7 +109,7 @@ public class Main {
 					new File("CPD-postgresql.txt"), list);
 			String gcffilename = filename[0] + "-GCF";
 			saveConvertedFile(gcffilename + ".xml", output);
-
+			tempFile = new File(gcffilename + "temp.xml");
 		}
 		// ConQAT
 		else if (args[0].trim().matches("4"))
@@ -127,7 +129,7 @@ public class Main {
 					IConstant.CONQAT_RESULT_FILE).convert(new File(filename[0]), list);
 			String gcffilename = filename[0] + "-GCF";
 			saveConvertedFile(gcffilename + ".xml", output);
-
+			tempFile = new File(gcffilename + "temp.xml");
 		}
 		// iClones
 		else if (args[0].trim().matches("5"))
@@ -149,7 +151,7 @@ public class Main {
 			String filename[] = args[1].trim().split("\\.");
 			String gcffilename = filename[0] + "-GCF";
 			saveConvertedFile(gcffilename + ".xml", output);
-
+			tempFile = new File(gcffilename + "temp.xml");
 		}
 		// Simian
 		else if (args[0].trim().matches("6"))
@@ -163,11 +165,14 @@ public class Main {
 			ArrayList<String> list = new ArrayList<String>();
 			list.add(args[1].trim()); // basepath
 			String output = new FileConverterFactory().createFileConverter(IConstant.SIIMIAN_RESULT_FILE).convert(new File(args[2].trim()), list);
+			
 			String filename[] = args[2].trim().split("\\."); // filename
 			saveConvertedFile(filename[0] + "temp.xml", output);
 			ArrayList<String> strlist = new ArrayList<String>();
 			String filecontent = readConvertedFile(filename[0] + "temp.xml", strlist);
+			tempFile = new File(filename[0] + "temp.xml");
 			String GCFfile = "";
+			
 			if (args.length == 3) {
 				GCFfile = converteToGCF(strlist);
 			} else if (args.length == 4) {
@@ -188,13 +193,12 @@ public class Main {
 			}
 			ArrayList<String> list = new ArrayList<String>();
 			list.add(args[1].trim()); // basepath
-			String output = new FileConverterFactory().createFileConverter(
-					IConstant.NICAD_RESULT_FILE).convert(
-					new File(args[2].trim()), list);
+			String output = new FileConverterFactory().createFileConverter(IConstant.NICAD_RESULT_FILE).convert(new File(args[2].trim()), list);
 			String filename[] = args[2].trim().split("\\."); // filename
-			saveConvertedFile("." + filename[0] + "temp.xml", output);
+			saveConvertedFile(filename[0] + "temp.xml", output);
+			tempFile = new File(filename[0] + "temp.xml");
 			ArrayList<String> strlist = new ArrayList<String>();
-			String filecontent = readConvertedFile("." + filename[0] + "temp.xml", strlist);
+			String filecontent = readConvertedFile(filename[0] + "temp.xml", strlist);
 			String GCFfile = "";
 			if (args.length == 3) {
 				GCFfile = converteToGCF(strlist);
@@ -206,6 +210,9 @@ public class Main {
 			saveConvertedFile(gcffilename + ".xml", GCFfile);
 		}
 
+		if (tempFile != null)
+			// delete the unused temp file
+			tempFile.delete();
 	}
 
 	public static void saveConvertedFile(String filename, String filecontent) {

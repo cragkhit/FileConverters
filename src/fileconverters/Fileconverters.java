@@ -39,6 +39,6 @@ import java.util.ArrayList;
  */
 public abstract class Fileconverters {
 
-    public abstract String convert(File f, ArrayList list);
+    public abstract String convert(File f, ArrayList<String> list);
 
 }

@@ -8,6 +8,7 @@ package fileconverters;
 /**
  *
  * @author parvez
+ * @author Chaiyong
  */
 public class IConstant {
     public static boolean readClonedCodeOnly =true;
@@ -22,7 +23,7 @@ public class IConstant {
     public static final int CCFINDER_RESULT_FILE = 1006;
     public static final int CPD_RESULT_FILE = 1007;
     public static final int CONQAT_RESULT_FILE = 1008;
-    
+    public static final int DECKARD_RESULT_FILE = 1009;
     
     //COnstants related with granularity of clone
     public static int GRANULARITY_FUNCTION = 2001;

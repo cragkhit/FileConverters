@@ -1,7 +1,7 @@
  package fileconverters.ccfinder;
 
 
-public class convert {
+public class Convert {
 	int conHexToDec(String hex)
 	{
 		int n=0,j=0,digit=0;

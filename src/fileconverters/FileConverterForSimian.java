@@ -119,7 +119,6 @@ public class FileConverterForSimian extends Fileconverters {
 
 							numOfFragments++;
 							numOfLines = numOfLines + (Integer.parseInt(splittedStr[4]) - Integer.parseInt(splittedStr[2]));
-
 							// increase the clone id to uniquely identify the clones
 							cloneId++; 
 						}

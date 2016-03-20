@@ -109,7 +109,7 @@ public class FileConverterForDeckard extends Fileconverters {
 		
 		sbfilecontent.append("\n</cloneDetectionResult>");
 		output = sbfilecontent.toString();
-		System.out.println(output);
+		// System.out.println(output);
 		
 		return output;
     }

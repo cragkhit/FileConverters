@@ -24,7 +24,10 @@ import org.apache.log4j.Logger;
  */
 public class Main {
 	private static Logger log;
+	private static String cloneFile = "";
 	private static String prefix = ""; 
+	private static String mode = "";
+	private static String minLine = "";
 
 	public static void main(String args[]) {
 		// initialize log4j logger
@@ -32,56 +35,66 @@ public class Main {
 		log.setLevel(Level.DEBUG);
 		BasicConfigurator.configure();
 
-		if (args.length == 0) {
+		if (args.length < 3) {
 			System.out.println("Usage: java -jar gcfFileConverter.jar <mode> <prefix path> <clone file>\n");
 			System.out.println("   <mode>: 1=ccfx, 2=simscan, 3=CPD, 4=ConQAT, 5=iClones, 6=simian, 7=nicad, 8=deckard");
 			System.out.println("   <prefix_path>: the unwanted prefix path that you want to remove from the output file.");
 			System.out.println("   <clone_file>: the original clone file.\n");
+			System.out.println("Example: java -jar gcfFileConverter.jar ccfx /unwanted/path ccfx.txt 6");
 			System.out.println("Example: java -jar gcfFileConverter.jar 6 /unwanted/path simian.txt");
+			System.out.println("Example: java -jar gcfFileConverter.jar nicad /unwanted/path nicad.xml");
 			System.exit(-1);
-		}
-		
-		// Option 1 - CCFinder
-		if (args[0].trim().matches("1") || args[0].trim().matches("ccfx")) {
-			printHeader("ccfx");
-			processCCFinder(args);
-		}
-		// Option 2 - SimScan
-		else if (args[0].trim().matches("2") || args[0].trim().matches("simscan")) {
-			printHeader("simscan");
-			processSimScan(args);
-		}
-		// Option 3 - CPD
-		else if (args[0].trim().matches("3") || args[0].trim().matches("cpd")) {
-			printHeader("cpd");
-			processCPD(args);
-		}
-		// Option 4 - ConQAT
-		else if (args[0].trim().matches("4") || args[0].trim().matches("conqat")) {
-			printHeader("conqat");
-			processConQAT(args);
-		}
-		// Option 5 - RCF
-		else if (args[0].trim().matches("5") || args[0].trim().matches("iclones")) {
-			printHeader("iclones");
-			processRCF(args);
-		}
-		// Option 6 - Simian
-		else if (args[0].trim().matches("6") || args[0].trim().matches("simian")) {
-			printHeader("simian");
-			// process Simian output
-			processSimian(args);
-		}
-		// Option 7 - NiCad
-		else if (args[0].trim().matches("7") || args[0].trim().matches("nicad")) {
-			printHeader("NiCad");
-			// process NiCad output
-			processNiCad(args);
-		} 
-		// Option 8 - Deckard
-		else if (args[0].trim().matches("8") || args[0].trim().matches("deckard")) {
-			printHeader("Deckard");
-			processDeckard(args);
+		} else {
+			mode = args[0];
+			prefix = args[1];
+			cloneFile = args[2];
+			if (args.length == 4)
+				minLine = args[3];
+			else
+				minLine = "6";
+			
+			// Option 1 - CCFinder
+			if (mode.trim().matches("1") || mode.trim().matches("ccfx")) {
+				printHeader("ccfx");
+				processCCFinder(args);
+			}
+			// Option 2 - SimScan
+			else if (mode.trim().matches("2") || mode.trim().matches("simscan")) {
+				printHeader("simscan");
+				processSimScan(args);
+			}
+			// Option 3 - CPD
+			else if (mode.trim().matches("3") || mode.trim().matches("cpd")) {
+				printHeader("cpd");
+				processCPD(args);
+			}
+			// Option 4 - ConQAT
+			else if (mode.trim().matches("4") || mode.trim().matches("conqat")) {
+				printHeader("conqat");
+				processConQAT(args);
+			}
+			// Option 5 - RCF
+			else if (mode.trim().matches("5") || mode.trim().matches("iclones")) {
+				printHeader("iclones");
+				processRCF(args);
+			}
+			// Option 6 - Simian
+			else if (mode.trim().matches("6") || mode.trim().matches("simian")) {
+				printHeader("simian");
+				// process Simian output
+				processSimian(args);
+			}
+			// Option 7 - NiCad
+			else if (mode.trim().matches("7") || mode.trim().matches("nicad")) {
+				printHeader("NiCad");
+				// process NiCad output
+				processNiCad(args);
+			}
+			// Option 8 - Deckard
+			else if (mode.trim().matches("8") || mode.trim().matches("deckard")) {
+				printHeader("Deckard");
+				processDeckard(args);
+			}
 		}
 		System.out.println("Done ...");
 	}
@@ -118,16 +131,16 @@ public class Main {
 		}
 		ArrayList list = new ArrayList();
 
-		list.add(args[1].trim());// base path
-		list.add(args[2].trim());// //filename
-		String filename[] = args[2].trim().split("\\.");
+		list.add(prefix.trim());// base path
+		list.add(cloneFile.trim());// //filename
+		String filename[] = cloneFile.trim().split("\\.");
 
 		if (args.length == 4) {
 			list.add(args[3].trim());
 		}
 
-		// System.out.println(args[1]);
-		// System.out.println(args[2]);
+		// System.out.println(prefix);
+		// System.out.println(cloneFile);
 
 		String output = new FileConverterFactory().createFileConverter(
 				IConstant.CPD_RESULT_FILE).convert(
@@ -152,11 +165,11 @@ public class Main {
 
 		String output = new FileConverterFactory().createFileConverter(
 				IConstant.SIMSCAN_RESULT_FILE).convert(
-				new File(args[1].trim()), list);// ///////////directory
+				new File(cloneFile.trim()), list);// ///////////directory
 		// String output = new
 		// FileConverterFactory().createFileConverter(IConstant.SIMSCAN_RESULT_FILE).convert(new
 		// File("\\simscan_eclipse-ant"),list);/////////////directory
-		String filename = args[2].trim();
+		String filename = cloneFile.trim();
 
 		saveConvertedFile("." + filename + "temp.xml", output);
 		ArrayList<String> strlist = new ArrayList();
@@ -178,7 +191,7 @@ public class Main {
 			System.out.println("Usage: java -jar gcf_Fileconverter.jar [8,deckard] "
 					+ "<Deckard's cluster file location> <basepath>");
 			System.out.println("Example: java -jar gcf_Fileconverter.jar deckard "
-					+ "/home/post_cluster_vdb_30_0_allg_0.95_30 /home/andy/deckard_clones/");
+					+ " /home/andy/deckard_clones/ /home/post_cluster_vdb_30_0_allg_0.95_30");
 			System.exit(-1);
 		}
 		
@@ -187,15 +200,16 @@ public class Main {
 		for (int i=0; i<args.length; i++)
 			argList.add(args[i]); 
 		
-		String output = new FileConverterFactory().createFileConverter(
-				IConstant.DECKARD_RESULT_FILE).convert(
-				new File(args[1].trim()), argList);
-		String filename = args[1].trim();
+		String output = new FileConverterFactory().createFileConverter(IConstant.DECKARD_RESULT_FILE)
+				.convert(new File(cloneFile.trim()), argList);
+		String filename = cloneFile.trim();
+		
 		String tmpfileName = filename + "_temp.xml";
 		saveConvertedFile(tmpfileName, output);
 		ArrayList<String> strlist = new ArrayList<String>();
 		String filecontent = readConvertedFile(tmpfileName, strlist);
 		String GCFfile = "";
+		
 		if (args.length == 3) {
 			GCFfile = converteToGCF(strlist);
 		} else if (args.length == 4) {
@@ -224,25 +238,24 @@ public class Main {
 			System.exit(-1);
 		}
 
-		String strfile = args[1];
+		String strfile = cloneFile;
 		String output = new FileConverterFactory().createFileConverter(
-				IConstant.CCFINDER_RESULT_FILE).convert(new File(args[1]), list);
+				IConstant.CCFINDER_RESULT_FILE).convert(new File(cloneFile), list);
 
-		String filename[] = args[1].trim().split("\\.");
+		String filename[] = cloneFile.trim().split("\\.");
 		saveConvertedFile(filename[0] + "temp.xml", output);
 		
 		ArrayList<String> strlist = new ArrayList<String>();
 		// System.out.println("strlist size = " + strlist.size());
-		// added the removed file path prefix to be used in converteToGCFmin()
-		prefix = args[3];
+
 		String filecontent = readConvertedFile(filename[0] + "temp.xml", strlist);
 		String GCFfile = "";
 		
 		// check if the MinLine is provided or not
-		if (args.length == 2) {
+		if (args.length == 3) {
 			GCFfile = converteToGCF(strlist);
 		} else {
-			int minilines = Integer.parseInt(args[2]);
+			int minilines = Integer.parseInt(args[3]);
 			GCFfile = converteToGCFmin(strlist, minilines);
 		}
 		String gcffilename = filename[0] + "-GCF";
@@ -258,9 +271,9 @@ public class Main {
 			System.exit(-1);
 		}
 		list.add(args[1].trim());// base path
-		list.add(args[2].trim());// //filename
+		list.add(cloneFile.trim());// //filename
 		list.add(args[3].trim());// minimum lines
-		String filename[] = args[2].trim().split("\\.");
+		String filename[] = cloneFile.trim().split("\\.");
 
 		String output = new FileConverterFactory().createFileConverter(
 				IConstant.CONQAT_RESULT_FILE).convert(new File(filename[0]),
@@ -273,21 +286,21 @@ public class Main {
 	public static void processRCF(String[] args) {
 		if (args.length < 2) {
 			System.out.println("Please input the correct parameters:");
-			System.out.println("$ java -jar GCF_Fileconverters.jar 5 iclones_result.rcf");
+			System.out.println("$ java -jar GCF_Fileconverters.jar 5 /unwanted/path iclones_result.rcf");
 			System.exit(-1);
 		}
 
 		ArrayList<String> list = new ArrayList<String>();
-		list.add(args[1].trim());
+		list.add(cloneFile.trim());
 
-		if (args.length == 3) {
+		/* if (args.length == 3) {
 			list.add(args[2].trim());
-		}
+		} */
 
 		String output = new FileConverterFactory().createFileConverter(
 				IConstant.RCF_RESULT_FILE).convert(new File("IClone-cook.txt"),
 				list);
-		String filename[] = args[1].trim().split("\\.");
+		String filename[] = cloneFile.trim().split("\\.");
 		String gcffilename = filename[0] + "-GCF";
 		saveConvertedFile(gcffilename + ".xml", output);
 		log.debug("Creating GCF file at " + gcffilename + ".xml");
@@ -307,19 +320,16 @@ public class Main {
 		// System.out.println("before converter factory");
 		String output = new FileConverterFactory().createFileConverter(
 				IConstant.SIIMIAN_RESULT_FILE).convert(
-				new File(args[2].trim()), list);
-		// System.out.println("after converter factory");
-		String filename[] = args[2].trim().split("\\."); // filename
-		saveConvertedFile("." + filename[0] + "temp.xml", output);
-
+				new File(cloneFile.trim()), list);
+	
+		// set prefix value
+		prefix = args[1];
+		String filename[] = cloneFile.trim().split("\\."); // filename
+		saveConvertedFile(filename[0] + "temp.xml", output);
+		log.debug("Filename = " + filename[0]);
 		ArrayList<String> strlist = new ArrayList<String>();
-		String filecontent = readConvertedFile("." + filename[0] + "temp.xml", strlist);
-		// System.out.println(filecontent);
+		String filecontent = readConvertedFile(filename[0] + "temp.xml", strlist);
 
-		// System.out.println(strlist.size());
-		log.debug("After viscad.xml");
-
-		// String GCFfile = converteToGCF(strlist);
 		String GCFfile = "";
 		if (args.length == 3) {
 			GCFfile = converteToGCF(strlist);
@@ -345,14 +355,14 @@ public class Main {
 
 		ArrayList<String> list = new ArrayList<String>();
 		list.add(args[1].trim()); // base path
-		log.debug("NiCad file = " + args[2].trim());
+		log.debug("NiCad file = " + cloneFile.trim());
 		
 		 String output = new FileConverterFactory().
 				 createFileConverter(IConstant.NICAD_RESULT_FILE).
-				 convert(new File(args[2].trim()), list);
+				 convert(new File(cloneFile.trim()), list);
 		 
 		// cut out the extension
-		String filename[] = args[2].trim().split(".xml");
+		String filename[] = cloneFile.trim().split(".xml");
 		log.debug("Converted file: " + filename[0] + "temp.xml");
 		saveConvertedFile(filename[0] + "temp.xml", output);
 
@@ -410,7 +420,7 @@ public class Main {
 	}
 
 	public static String converteToGCF(ArrayList<String> strlist) {
-		log.debug("In converteToGCF with strlist size = " + strlist.size());
+		// log.debug("In converteToGCF with strlist size = " + strlist.size());
 		StringBuffer sbGCFfile = new StringBuffer();
 		sbGCFfile.append("<CloneClasses>\r\n");
 
@@ -478,8 +488,10 @@ public class Main {
 							i++;
 						}
 						
-						sbGCFfile.append("\t<CloneClass>\r\n");
-						sbGCFfile.append("\t<ID>");
+						String tab = "    ";
+						
+						sbGCFfile.append(tab + "<CloneClass>\r\n");
+						sbGCFfile.append(tab + "<ID>");
 						sbGCFfile.append(strid);
 						sbGCFfile.append("</ID>\r\n");
 						
@@ -555,19 +567,20 @@ public class Main {
 									findex++;
 								}
 							}
-							sbGCFfile.append("\t\t<Clone>\r\n");
-							sbGCFfile.append("\t\t\t<Fragment>\r\n");
-							sbGCFfile.append("\t\t\t\t<File>");
-							sbGCFfile.append(filepath);
+							sbGCFfile.append(tab + tab + "<Clone>\r\n");
+							sbGCFfile.append(tab + tab + tab + "<Fragment>\r\n");
+							sbGCFfile.append(tab + tab + tab + tab + "<File>");
+							// remove the unwanted prefix
+							sbGCFfile.append(filepath.replace(prefix, ""));
 							sbGCFfile.append("</File>\r\n");
-							sbGCFfile.append("\t\t\t\t<Start>");
+							sbGCFfile.append(tab + tab + tab + tab + "<Start>");
 							sbGCFfile.append(startline);
 							sbGCFfile.append("</Start>\r\n");
-							sbGCFfile.append("\t\t\t\t<End>");
+							sbGCFfile.append(tab + tab + tab + tab + "<End>");
 							sbGCFfile.append(endline);
 							sbGCFfile.append("</End>\r\n");
-							sbGCFfile.append("\t\t\t</Fragment>\r\n");
-							sbGCFfile.append("\t\t</Clone>\r\n");
+							sbGCFfile.append(tab + tab + tab + "</Fragment>\r\n");
+							sbGCFfile.append(tab + tab + "</Clone>\r\n");
 							
 							int lines = Integer.parseInt(endline) - Integer.parseInt(startline) + 1;
 
@@ -579,7 +592,7 @@ public class Main {
 						} 
 
 						if (findclass && endclass) {
-							sbGCFfile.append("\t</CloneClass>\r\n");
+							sbGCFfile.append(tab + "</CloneClass>\r\n");
 						}
 						classIndex = endclassIndex;
 					} 
@@ -596,14 +609,6 @@ public class Main {
 		return sbGCFfile.toString();
 
 	}
-
-	/*
-	 * public static String getNum (int pos, String strline, String substr ) {
-	 * 
-	 * String strnum="";
-	 * 
-	 * return strnum; }
-	 */
 
 	public static String converteToGCFmin(ArrayList<String> strlist, int minimumlines) {
 		StringBuffer sbGCFfile = new StringBuffer();

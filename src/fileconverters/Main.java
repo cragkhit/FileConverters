@@ -168,9 +168,9 @@ public class Main {
 				new File(cloneFile.trim()), list); 
 		String filename = cloneFile.trim();
 
-		saveConvertedFile("." + filename + "temp.xml", output);
+		saveConvertedFile(filename + "temp.xml", output);
 		ArrayList<String> strlist = new ArrayList<String>();
-		String filecontent = readConvertedFile("." + filename + "temp.xml", strlist);
+		String filecontent = readConvertedFile(filename + "temp.xml", strlist);
 		String GCFfile = "";
 		if (args.length < 4) {
 			GCFfile = converteToGCF(strlist);
@@ -181,6 +181,14 @@ public class Main {
 		filename += "-GCF";
 		saveConvertedFile(filename + ".xml", GCFfile);
 		log.debug("Creating GCF file at " + filename + ".xml");
+
+		// remove the temp file
+		File tmpfile = new File(filename + "temp.xml");
+		if (tmpfile.delete()) {
+			log.debug(tmpfile.getName() + " is deleted!");
+		} else {
+			log.error("Delete operation is failed.");
+		}
 	}
 
 	private static void processDeckard(String[] args) {
@@ -265,6 +273,14 @@ public class Main {
 			String gcffilename = filename[0] + "-GCF.xml";
 			writeXML(converteToGcfDomMin(strlist), gcffilename);
 		}
+		
+		// remove the temp file
+		File tmpfile = new File(filename[0] + "temp.xml");
+		if (tmpfile.delete()) {
+			log.debug(tmpfile.getName() + " is deleted!");
+		} else {
+			log.error("Delete operation is failed.");
+		}
 	}
 
 	public static void processConQAT(String[] args) {
@@ -310,6 +326,14 @@ public class Main {
 		String gcffilename = filename[0] + "-GCF";
 		saveConvertedFile(gcffilename + ".xml", output);
 		log.debug("Creating GCF file at " + gcffilename + ".xml");
+
+		// remove the temp file
+		File tmpfile = new File(filename[0] + "temp.xml");
+		if (tmpfile.delete()) {
+			log.debug(tmpfile.getName() + " is deleted!");
+		} else {
+			log.error("Delete operation is failed.");
+		}
 	}
 
 	public static void processSimian(String[] args) {
@@ -344,6 +368,14 @@ public class Main {
 		String gcffilename = filename[0] + "-GCF";
 		saveConvertedFile(gcffilename + ".xml", GCFfile);
 		log.debug("Creating GCF file at " + gcffilename + ".xml");
+		
+		// remove the temp file
+		File tmpfile = new File(filename[0] + "temp.xml");
+		if (tmpfile.delete()) {
+			log.debug(tmpfile.getName() + " is deleted!");
+		} else {
+			log.error("Delete operation is failed.");
+		}
 	}
 
 	public static void processNiCad(String[] args) {
@@ -370,9 +402,8 @@ public class Main {
 		ArrayList<String> strlist = new ArrayList<String>();
 		// read each line into an array list: strlist
 		String filecontent = readConvertedFile(filename[0] + "temp.xml", strlist);
-		log.debug("readConvertedFile");
-		log.debug(strlist.size());
-		// String GCFfile = converteToGCF(strlist);
+		// log.debug("readConvertedFile");
+		// log.debug(strlist.size());
 
 		// check mode of conversion
 		String GCFfile = "";
@@ -387,6 +418,14 @@ public class Main {
 		String gcffilename = filename[0] + "-GCF";
 		saveConvertedFile(gcffilename + ".xml", GCFfile);
 		log.debug("Creating GCF file at " + gcffilename + ".xml");
+		
+		// remove the temp file
+		File tmpfile = new File(filename[0] + "temp.xml");
+		if (tmpfile.delete()) {
+			log.debug(tmpfile.getName() + " is deleted!");
+		} else {
+			log.error("Delete operation is failed.");
+		}
 	}
 
 	public static String readConvertedFile(String filename, ArrayList<String> list) {

@@ -6,9 +6,23 @@ import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  * This class is modified further to match with needs of CloPlag experiment by
@@ -34,7 +48,7 @@ public class Main {
 			log.debug("Usage: java -jar gcfFileConverter.jar <mode> <prefix path> <clone file>\n");
 			log.debug("   <mode>: 1=ccfx, 2=simscan, 3=CPD, 4=ConQAT, 5=iClones, 6=simian, 7=nicad, 8=deckard");
 			log.debug("   <prefix_path>: the unwanted prefix path that you want to remove from the output file.");
-			log.debug("   <clone_file>: the original clone file.\n");
+			log.debug("   <clone_file>: the original clone file.");
 			log.debug("   [min_line]: minimum number of clone line.\n");
 			log.debug("Example: java -jar gcfFileConverter.jar ccfx /unwanted/path ccfx.txt 6");
 			log.debug("Example: java -jar gcfFileConverter.jar 6 /unwanted/path simian.txt");
@@ -85,8 +99,8 @@ public class Main {
 				processDeckard(args);
 			} else {
 				log.error("Incorrect tool specified: " + mode.trim() + ". Please check again.");
+				System.exit(-1);
 			}
-			
 		}
 		log.debug("Done ...");
 	}
@@ -238,13 +252,19 @@ public class Main {
 		// check if the MinLine is provided or not
 		if (args.length < 4) {
 			GCFfile = converteToGCF(strlist);
-		} else {
+			String gcffilename = filename[0] + "-GCF";
+			saveConvertedFile(gcffilename + ".xml", GCFfile);
+			log.debug("Creating GCF file at " + gcffilename + ".xml");
+		} else if (args.length == 4) {
 			int minlineInt = Integer.parseInt(minLine);
 			GCFfile = converteToGCFmin(strlist, minlineInt);
+			String gcffilename = filename[0] + "-GCF";
+			saveConvertedFile(gcffilename + ".xml", GCFfile);
+			log.debug("Creating GCF file at " + gcffilename + ".xml");
+		} else if (args.length == 5 && args[4].equals("-new")) {
+			String gcffilename = filename[0] + "-GCF.xml";
+			writeXML(converteToGcfDomMin(strlist), gcffilename);
 		}
-		String gcffilename = filename[0] + "-GCF";
-		saveConvertedFile(gcffilename + ".xml", GCFfile);
-		log.debug("Creating GCF file at " + gcffilename + ".xml");
 	}
 
 	public static void processConQAT(String[] args) {
@@ -401,7 +421,6 @@ public class Main {
 	}
 
 	public static String converteToGCF(ArrayList<String> strlist) {
-		// log.debug("In converteToGCF with strlist size = " + strlist.size());
 		StringBuffer sbGCFfile = new StringBuffer();
 		sbGCFfile.append("<CloneClasses>\r\n");
 
@@ -749,5 +768,196 @@ public class Main {
 		sbGCFfile.append("</CloneClasses>\r\n");
 
 		return sbGCFfile.toString();
+	}
+	
+	public static Document converteToGcfDomMin(ArrayList<String> strlist) {
+		// root elements
+		Document doc = null;
+		try {
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			doc = docBuilder.newDocument();
+			Element rootElement = doc.createElement("cloneclasses");
+			doc.appendChild(rootElement);
+
+			// StringBuffer sbGCFfile = new StringBuffer();
+			// sbGCFfile.append("<cloneclasses>\r\n");
+			int classIndex = 0;
+			int endclassIndex = 0;
+			boolean findclass = false;
+			boolean endclass = false;
+			int minimumLines = 0;
+			while (classIndex < strlist.size()) {
+				if (strlist.get(classIndex).startsWith("<class")) {
+					String classInfo = strlist.get(classIndex);
+					endclassIndex = classIndex + 1;
+					endclass = false;
+					while (endclassIndex < strlist.size() && !endclass) {
+						if (strlist.get(endclassIndex).startsWith("</class>")) {
+							endclass = true;
+							findclass = true;
+							int idpo, i = 0, num = 1, nid = 0, nfragment = 0;
+							String strid = "";
+							while (i < classInfo.length()) {
+								if (classInfo.regionMatches(i, "id=", 0, 3)) {
+									int start = i + 4;
+									int j = start + 1;
+									boolean endid = false;
+									// finding id
+									while (j < classInfo.length() && !endid) {
+										if (classInfo.regionMatches(j, "\"", 0, 1)) {
+											endid = true;
+											i = j;
+											strid = classInfo.substring(start, j);
+										} else {
+											j++;
+										}
+									}
+								}
+
+								if (classInfo.regionMatches(i, "nfragments=", 0, 11)) {
+									int startfrag = i + 12;
+									int k = startfrag + 1;
+									boolean endfrag = false;
+									String strfrag = "";
+									while (k < classInfo.length() && !endfrag) {
+										if (classInfo.regionMatches(k, "\"", 0, 1)) {
+											endfrag = true;
+											i = k;
+											strfrag = classInfo.substring(startfrag, k); // nfragments
+											nfragment = Integer.parseInt(strfrag);
+										} else {
+											k++;
+										}
+									}
+								}
+								i++;
+							}
+
+							// staff elements
+							Element cloneClass = doc.createElement("cloneclass");
+							rootElement.appendChild(cloneClass);
+							cloneClass.setAttribute("id", strid);
+
+							String tab = "    ";
+							// sbGCFfile.append(tab + "<cloneclass id=\"" + strid + "\">\r\n");
+							int numf = nfragment;
+							int strindex = classIndex + 1;
+							while (numf > 0 && strindex < endclassIndex && strindex < strlist.size()) {
+								String strfragment = strlist.get(strindex);
+								String startline = "";
+								String endline = "";
+								String filepath = "";
+								if (strfragment.startsWith("<source file=")) {
+									int findex = 0;
+									while (findex < strfragment.length()) {
+										if (strfragment.regionMatches(findex, "file=", 0, 5)) {
+											int startf = findex + 6;
+											int endf = startf + 1;
+											boolean bendf = false;
+											while (endf < strfragment.length() && !bendf) {
+												if (strfragment.regionMatches(endf, "\"", 0, 1)) {
+													bendf = true;
+													filepath = strfragment.substring(startf, endf);
+													findex = endf;
+												} else {
+													endf++;
+												}
+											}
+										}
+										if (strfragment.regionMatches(findex, "startline=", 0, 10)) {
+											int startf = findex + 11;
+											int endf = startf + 1;
+											boolean bendf = false;
+											while (endf < strfragment.length() && !bendf) {
+												if (strfragment.regionMatches(endf, "\"", 0, 1)) {
+													bendf = true;
+													startline = strfragment.substring(startf, endf);
+													findex = endf;
+												} else {
+													endf++;
+												}
+											}
+										}
+										if (strfragment.regionMatches(findex, "endline=", 0, 8)) {
+											int startf = findex + 9;
+											int endf = startf + 1;
+											boolean bendf = false;
+											while (endf < strfragment.length() && !bendf) {
+												if (strfragment.regionMatches(endf, "\"", 0, 1)) {
+													bendf = true;
+													endline = strfragment.substring(startf, endf);
+													findex = endf;
+												} else {
+													endf++;
+												}
+											}
+										}
+										findex++;
+									}
+								}
+								
+								int lines = Integer.parseInt(endline) - Integer.parseInt(startline) + 1;
+
+								// Only add clone to the result if the size is
+								// larger than minimum line
+								if (lines >= Integer.parseInt(minLine)) {
+									// clone elements
+									Element clone = doc.createElement("clone");
+									cloneClass.appendChild(clone);
+
+									// fragment elements
+									Element frag = doc.createElement("fragment");
+									frag.setAttribute("file", filepath.replace(prefix, ""));
+									frag.setAttribute("start", startline);
+									frag.setAttribute("end", endline);
+									clone.appendChild(frag);
+								}
+
+								if (minimumLines == 0 || lines < minimumLines) {
+									minimumLines = lines;
+								}
+								strindex++;
+								numf--;
+							}
+
+							if (findclass && endclass) {
+								// sbGCFfile.append(tab + "</CloneClass>\r\n");
+							}
+							classIndex = endclassIndex;
+						} else {
+							endclassIndex++;
+						}
+					}
+				}
+				classIndex++;
+			}
+			// sbGCFfile.append("</CloneClasses>\r\n");
+
+			// return sbGCFfile.toString();
+		} catch (ParserConfigurationException e) {
+			log.error(e.getMessage());
+		}
+		
+		return doc;
+	}
+	
+	public static void writeXML(Document doc, String gcffilename) {
+		// write the content into xml file
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer;
+		try {
+			transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(gcffilename));
+			// StreamResult result = new StreamResult(System.out);
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
+			transformer.transform(source, result);
+			log.debug("Creating GCF file at " + gcffilename + ".xml");
+		} catch (TransformerConfigurationException e) {
+			log.error(e.getMessage());
+		} catch (TransformerException e) {
+			log.error(e.getMessage());
+		}
 	}
 }

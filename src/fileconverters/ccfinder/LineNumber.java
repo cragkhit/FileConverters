@@ -3,6 +3,8 @@ package fileconverters.ccfinder;
 import java.io.*;
 import java.util.StringTokenizer;
 
+import fileconverters.Main;
+
 public class LineNumber {
     private String postfix;
     private String ccfxprepdir;
@@ -13,10 +15,12 @@ public class LineNumber {
     }
 
     int getLineNumber(String fname, int n) throws IOException {
-    	// System.out.println("fname = " + fname);
+    		// System.out.println("fname = " + fname);
         GenerateIntFileName gen = new GenerateIntFileName(postfix, ccfxprepdir);
         String target = gen.generate(fname);
-
+        target = target.replace(Main.prefix, "");
+        // System.out.println("prefix = " + Main.prefix);
+        // System.out.println("target = " + target.replace(Main.prefix, ""));
         BufferedReader in = new BufferedReader(new FileReader(target));
         int i = 0;
         int lineNumber = 0;

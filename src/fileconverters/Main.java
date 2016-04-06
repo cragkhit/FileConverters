@@ -34,7 +34,7 @@ import org.w3c.dom.Element;
 public class Main {
 	private static Logger log;
 	private static String cloneFile = "";
-	private static String prefix = ""; 
+	public static String prefix = ""; 
 	private static String mode = "";
 	private static String minLine = "";
 

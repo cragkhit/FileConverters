@@ -138,10 +138,10 @@ public class TestClone {
 				boolean ch = true;
 				for (Clone clone : r.getCloneList()) {
 					// System.out.println(clone.getSt());
-					// int sl = ln.getLineNumber(fname[clone.getFid()], clone.getSt());
-					// int fl = ln.getLineNumber(fname[clone.getFid()], clone.getFt());
-					int sl = clone.getSt();
-					int fl = clone.getFt();
+					int sl = ln.getLineNumber(fname[clone.getFid()], clone.getSt());
+					int fl = ln.getLineNumber(fname[clone.getFid()], clone.getFt());
+					// int sl = clone.getSt();
+					// int fl = clone.getFt();
 					
 					if (ch == true) {
 						String stroutput = "\n<class id=\"" + a + "\" nlines=\"" + (fl - sl + 1) + "\" nfragments=\""

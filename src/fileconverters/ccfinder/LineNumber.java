@@ -18,7 +18,7 @@ public class LineNumber {
     		// System.out.println("fname = " + fname);
         GenerateIntFileName gen = new GenerateIntFileName(postfix, ccfxprepdir);
         String target = gen.generate(fname);
-        target = target.replace(Main.prefix, "");
+        target = "ccfxprep/" + target.replace(Main.prefix, "");
         // System.out.println("prefix = " + Main.prefix);
         // System.out.println("target = " + target.replace(Main.prefix, ""));
         BufferedReader in = new BufferedReader(new FileReader(target));

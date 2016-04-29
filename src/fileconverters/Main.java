@@ -36,7 +36,7 @@ public class Main {
 	private static String cloneFile = "";
 	public static String prefix = ""; 
 	private static String mode = "";
-	private static String minLine = "";
+	private static String minLine = "6";
 
 	public static void main(String args[]) {
 		// initialize log4j logger
@@ -106,7 +106,7 @@ public class Main {
 	}
 	
 	public static void printHeader(String toolName) {
-		log.debug("GCFFileConverter (v. 0.1) ...");
+		log.debug("GCFFileConverter (v 0.3) ...");
 		String[] tools = {"ccfx", "simscan", "CPD", "ConQAT", "iClones", "Simian", "NiCad", "Deckard" };
 		log.debug("Converting " + toolName + " clone report into GCF format...");
 	}
@@ -160,6 +160,10 @@ public class Main {
 			log.debug("$java -jar gcfFileConverter.jar 2 /Fileconverters/simscan_eclipse-ant eclipse-ant 6");
 			System.exit(-1);
 		}
+		if (args.length == 4)
+			minLine = args[3];
+		else
+			minLine = "6";
 
 		ArrayList<String> list = new ArrayList<String>();
 
@@ -200,6 +204,10 @@ public class Main {
 					+ " /home/andy/deckard_clones/ /home/post_cluster_vdb_30_0_allg_0.95_30");
 			System.exit(-1);
 		}
+		if (args.length == 4)
+			minLine = args[3];
+		else
+			minLine = "6";
 		
 		// create an array list to store all clone fragments
 		ArrayList<String> argList = new ArrayList<String>();
@@ -460,6 +468,7 @@ public class Main {
 	}
 
 	public static String converteToGCF(ArrayList<String> strlist) {
+		log.debug("in converteToGCF");
 		StringBuffer sbGCFfile = new StringBuffer();
 		sbGCFfile.append("<CloneClasses>\r\n");
 
@@ -630,6 +639,7 @@ public class Main {
 	}
 
 	public static String converteToGCFmin(ArrayList<String> strlist, int minimumlines) {
+		log.debug("in converteToGCFMin");
 		StringBuffer sbGCFfile = new StringBuffer();
 		sbGCFfile.append("<CloneClasses>\r\n");
 

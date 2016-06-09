@@ -24,7 +24,7 @@ public class FileConverterForDeckard extends Fileconverters {
 	
     public String convert(File file, ArrayList argslist) {
     		///// log setup
-    		log = Logger.getLogger(FileConverterForNicad.class);
+    		log = Logger.getLogger(FileConverterForDeckard.class);
 		// set logging level
 		log.setLevel(Level.DEBUG);
 		// use basic configuration
@@ -63,9 +63,10 @@ public class FileConverterForDeckard extends Fileconverters {
 					// sbcloneInfo.append(strfilePath);
 					sbcloneInfo.append(filePath.trim());
 					sbcloneInfo.append("\" startline=\"");
-					sbcloneInfo.append(lineSplitted[1]);
-					sbcloneInfo.append("\" endline=\"");
 					sbcloneInfo.append(lineSplitted[0]);
+					sbcloneInfo.append("\" endline=\"");
+					int endLine = Integer.valueOf(lineSplitted[0]) + Integer.valueOf(lineSplitted[1]) - 1;
+					sbcloneInfo.append(endLine);
 					sbcloneInfo.append("\" pcid=\"");
 					sbcloneInfo.append(cloneId);
 					sbcloneInfo.append("\">");

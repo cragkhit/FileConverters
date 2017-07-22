@@ -1,0 +1,1251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cloneclasses>
+<cloneclass id="1">
+<clone>
+<fragment end="153" file="mockito-master/buildSrc/src/main/groovy/org/mockito/release/comparison/ZipCompare.java" start="98"/>
+</clone>
+<clone>
+<fragment end="208" file="mockito-master/buildSrc/src/main/groovy/org/mockito/release/comparison/ZipCompare.java" start="153"/>
+</clone>
+</cloneclass>
+<cloneclass id="9">
+<clone>
+<fragment end="392" file="mockito-master/src/test/java/org/mockitoutil/ClassLoaders.java" start="217"/>
+</clone>
+<clone>
+<fragment end="684" file="mockito-master/src/test/java/org/mockitoutil/ClassLoaders.java" start="509"/>
+</clone>
+</cloneclass>
+<cloneclass id="52">
+<clone>
+<fragment end="556" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="389"/>
+</clone>
+<clone>
+<fragment end="1634" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="1467"/>
+</clone>
+</cloneclass>
+<cloneclass id="69">
+<clone>
+<fragment end="1125" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="955"/>
+</clone>
+<clone>
+<fragment end="3670" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="3500"/>
+</clone>
+</cloneclass>
+<cloneclass id="72">
+<clone>
+<fragment end="1652" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="1533"/>
+</clone>
+<clone>
+<fragment end="3688" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="3569"/>
+</clone>
+</cloneclass>
+<cloneclass id="38">
+<clone>
+<fragment end="1922" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="1675"/>
+</clone>
+<clone>
+<fragment end="2614" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="2367"/>
+</clone>
+<clone>
+<fragment end="2957" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="2710"/>
+</clone>
+<clone>
+<fragment end="2268" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="2021"/>
+</clone>
+</cloneclass>
+<cloneclass id="39">
+<clone>
+<fragment end="2703" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="2360"/>
+</clone>
+<clone>
+<fragment end="3046" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="2703"/>
+</clone>
+</cloneclass>
+<cloneclass id="26">
+<clone>
+<fragment end="4630" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="4507"/>
+</clone>
+<clone>
+<fragment end="4753" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="4630"/>
+</clone>
+<clone>
+<fragment end="4999" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="4876"/>
+</clone>
+</cloneclass>
+<cloneclass id="28">
+<clone>
+<fragment end="4753" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="4507"/>
+</clone>
+<clone>
+<fragment end="4999" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="4753"/>
+</clone>
+</cloneclass>
+<cloneclass id="24">
+<clone>
+<fragment end="5611" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="5417"/>
+</clone>
+<clone>
+<fragment end="5805" file="mockito-master/src/test/java/org/mockitousage/matchers/MatchersTest.java" start="5611"/>
+</clone>
+</cloneclass>
+<cloneclass id="76">
+<clone>
+<fragment end="197" file="mockito-master/src/test/java/org/mockitousage/matchers/ReflectionMatchersTest.java" start="115"/>
+</clone>
+<clone>
+<fragment end="320" file="mockito-master/src/test/java/org/mockitousage/matchers/ReflectionMatchersTest.java" start="238"/>
+</clone>
+</cloneclass>
+<cloneclass id="90">
+<clone>
+<fragment end="112" file="mockito-master/src/test/java/org/mockitousage/matchers/NewMatchersTest.java" start="25"/>
+</clone>
+<clone>
+<fragment end="199" file="mockito-master/src/test/java/org/mockitousage/matchers/NewMatchersTest.java" start="112"/>
+</clone>
+</cloneclass>
+<cloneclass id="93">
+<clone>
+<fragment end="282" file="mockito-master/src/test/java/org/mockitousage/matchers/NewMatchersTest.java" start="199"/>
+</clone>
+<clone>
+<fragment end="365" file="mockito-master/src/test/java/org/mockitousage/matchers/NewMatchersTest.java" start="282"/>
+</clone>
+</cloneclass>
+<cloneclass id="102">
+<clone>
+<fragment end="177" file="mockito-master/src/test/java/org/mockitousage/matchers/MoreMatchersTest.java" start="107"/>
+</clone>
+<clone>
+<fragment end="247" file="mockito-master/src/test/java/org/mockitousage/matchers/MoreMatchersTest.java" start="177"/>
+</clone>
+<clone>
+<fragment end="391" file="mockito-master/src/test/java/org/mockitousage/matchers/MoreMatchersTest.java" start="321"/>
+</clone>
+</cloneclass>
+<cloneclass id="111">
+<clone>
+<fragment end="348" file="mockito-master/src/test/java/org/mockitousage/customization/BDDMockitoTest.java" start="269"/>
+</clone>
+<clone>
+<fragment end="427" file="mockito-master/src/test/java/org/mockitousage/customization/BDDMockitoTest.java" start="348"/>
+</clone>
+</cloneclass>
+<cloneclass id="122">
+<clone>
+<fragment end="434" file="mockito-master/src/test/java/org/mockitousage/stubbing/StubbingConsecutiveAnswersTest.java" start="377"/>
+</clone>
+<clone>
+<fragment end="1007" file="mockito-master/src/test/java/org/mockitousage/stubbing/StubbingConsecutiveAnswersTest.java" start="950"/>
+</clone>
+</cloneclass>
+<cloneclass id="137">
+<clone>
+<fragment end="175" file="mockito-master/src/test/java/org/mockitousage/PlaygroundWithDemoOfUnclonedParametersProblemTest.java" start="46"/>
+</clone>
+<clone>
+<fragment end="304" file="mockito-master/src/test/java/org/mockitousage/PlaygroundWithDemoOfUnclonedParametersProblemTest.java" start="175"/>
+</clone>
+</cloneclass>
+<cloneclass id="140">
+<clone>
+<fragment end="397" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesWhenVerificationFailsTest.java" start="344"/>
+</clone>
+<clone>
+<fragment end="1366" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesWhenVerificationFailsTest.java" start="1313"/>
+</clone>
+</cloneclass>
+<cloneclass id="141">
+<clone>
+<fragment end="605" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesWhenVerificationFailsTest.java" start="544"/>
+</clone>
+<clone>
+<fragment end="697" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesWhenVerificationFailsTest.java" start="636"/>
+</clone>
+</cloneclass>
+<cloneclass id="146">
+<clone>
+<fragment end="1768" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesWhenVerificationFailsTest.java" start="1694"/>
+</clone>
+<clone>
+<fragment end="1863" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesWhenVerificationFailsTest.java" start="1789"/>
+</clone>
+</cloneclass>
+<cloneclass id="147">
+<clone>
+<fragment end="303" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationUsingMatchersTest.java" start="242"/>
+</clone>
+<clone>
+<fragment end="376" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationUsingMatchersTest.java" start="315"/>
+</clone>
+<clone>
+<fragment end="445" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationUsingMatchersTest.java" start="384"/>
+</clone>
+</cloneclass>
+<cloneclass id="155">
+<clone>
+<fragment end="311" file="mockito-master/src/test/java/org/mockitousage/verification/RelaxedVerificationInOrderTest.java" start="247"/>
+</clone>
+<clone>
+<fragment end="424" file="mockito-master/src/test/java/org/mockitousage/verification/RelaxedVerificationInOrderTest.java" start="360"/>
+</clone>
+</cloneclass>
+<cloneclass id="153">
+<clone>
+<fragment end="1445" file="mockito-master/src/test/java/org/mockitousage/verification/RelaxedVerificationInOrderTest.java" start="1393"/>
+</clone>
+<clone>
+<fragment end="1497" file="mockito-master/src/test/java/org/mockitousage/verification/RelaxedVerificationInOrderTest.java" start="1445"/>
+</clone>
+</cloneclass>
+<cloneclass id="180">
+<clone>
+<fragment end="2104" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationInOrderWithCallsTest.java" start="1994"/>
+</clone>
+<clone>
+<fragment end="2296" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationInOrderWithCallsTest.java" start="2186"/>
+</clone>
+<clone>
+<fragment end="2406" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationInOrderWithCallsTest.java" start="2296"/>
+</clone>
+</cloneclass>
+<cloneclass id="158">
+<clone>
+<fragment end="2550" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationInOrderWithCallsTest.java" start="2495"/>
+</clone>
+<clone>
+<fragment end="2605" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationInOrderWithCallsTest.java" start="2550"/>
+</clone>
+</cloneclass>
+<cloneclass id="200">
+<clone>
+<fragment end="275" file="mockito-master/src/test/java/org/mockitousage/verification/SelectedMocksInOrderVerificationTest.java" start="199"/>
+</clone>
+<clone>
+<fragment end="931" file="mockito-master/src/test/java/org/mockitousage/verification/SelectedMocksInOrderVerificationTest.java" start="855"/>
+</clone>
+</cloneclass>
+<cloneclass id="202">
+<clone>
+<fragment end="705" file="mockito-master/src/test/java/org/mockitousage/verification/SelectedMocksInOrderVerificationTest.java" start="652"/>
+</clone>
+<clone>
+<fragment end="811" file="mockito-master/src/test/java/org/mockitousage/verification/SelectedMocksInOrderVerificationTest.java" start="758"/>
+</clone>
+</cloneclass>
+<cloneclass id="209">
+<clone>
+<fragment end="618" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesOnVerificationInOrderErrorsTest.java" start="535"/>
+</clone>
+<clone>
+<fragment end="772" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesOnVerificationInOrderErrorsTest.java" start="689"/>
+</clone>
+</cloneclass>
+<cloneclass id="210">
+<clone>
+<fragment end="232" file="mockito-master/src/test/java/org/mockitousage/verification/OnlyVerificationTest.java" start="175"/>
+</clone>
+<clone>
+<fragment end="289" file="mockito-master/src/test/java/org/mockitousage/verification/OnlyVerificationTest.java" start="232"/>
+</clone>
+</cloneclass>
+<cloneclass id="215">
+<clone>
+<fragment end="124" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesWhenTimesXVerificationFailsTest.java" start="11"/>
+</clone>
+<clone>
+<fragment end="253" file="mockito-master/src/test/java/org/mockitousage/verification/DescriptiveMessagesWhenTimesXVerificationFailsTest.java" start="140"/>
+</clone>
+</cloneclass>
+<cloneclass id="234">
+<clone>
+<fragment end="510" file="mockito-master/src/test/java/org/mockitousage/verification/BasicVerificationInOrderTest.java" start="458"/>
+</clone>
+<clone>
+<fragment end="1472" file="mockito-master/src/test/java/org/mockitousage/verification/BasicVerificationInOrderTest.java" start="1420"/>
+</clone>
+</cloneclass>
+<cloneclass id="243">
+<clone>
+<fragment end="746" file="mockito-master/src/test/java/org/mockitousage/verification/BasicVerificationInOrderTest.java" start="682"/>
+</clone>
+<clone>
+<fragment end="810" file="mockito-master/src/test/java/org/mockitousage/verification/BasicVerificationInOrderTest.java" start="746"/>
+</clone>
+</cloneclass>
+<cloneclass id="239">
+<clone>
+<fragment end="931" file="mockito-master/src/test/java/org/mockitousage/verification/BasicVerificationInOrderTest.java" start="810"/>
+</clone>
+<clone>
+<fragment end="1052" file="mockito-master/src/test/java/org/mockitousage/verification/BasicVerificationInOrderTest.java" start="931"/>
+</clone>
+</cloneclass>
+<cloneclass id="245">
+<clone>
+<fragment end="188" file="mockito-master/src/test/java/org/mockitousage/verification/PrintingVerboseTypesWithArgumentsTest.java" start="95"/>
+</clone>
+<clone>
+<fragment end="376" file="mockito-master/src/test/java/org/mockitousage/verification/PrintingVerboseTypesWithArgumentsTest.java" start="283"/>
+</clone>
+</cloneclass>
+<cloneclass id="253">
+<clone>
+<fragment end="222" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationWithTimeoutTest.java" start="169"/>
+</clone>
+<clone>
+<fragment end="566" file="mockito-master/src/test/java/org/mockitousage/verification/VerificationWithTimeoutTest.java" start="513"/>
+</clone>
+</cloneclass>
+<cloneclass id="256">
+<clone>
+<fragment end="121" file="mockito-master/src/test/java/org/mockitousage/verification/ExactNumberOfTimesVerificationTest.java" start="23"/>
+</clone>
+<clone>
+<fragment end="219" file="mockito-master/src/test/java/org/mockitousage/verification/ExactNumberOfTimesVerificationTest.java" start="121"/>
+</clone>
+</cloneclass>
+<cloneclass id="261">
+<clone>
+<fragment end="84" file="mockito-master/src/test/java/org/mockitousage/stacktrace/ClickableStackTracesWhenFrameworkMisusedTest.java" start="18"/>
+</clone>
+<clone>
+<fragment end="170" file="mockito-master/src/test/java/org/mockitousage/stacktrace/ClickableStackTracesWhenFrameworkMisusedTest.java" start="104"/>
+</clone>
+</cloneclass>
+<cloneclass id="262">
+<clone>
+<fragment end="101" file="mockito-master/src/test/java/org/mockitousage/stacktrace/StackTraceFilteringTest.java" start="51"/>
+</clone>
+<clone>
+<fragment end="151" file="mockito-master/src/test/java/org/mockitousage/stacktrace/StackTraceFilteringTest.java" start="101"/>
+</clone>
+</cloneclass>
+<cloneclass id="265">
+<clone>
+<fragment end="131" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationInOrderTest.java" start="79"/>
+</clone>
+<clone>
+<fragment end="204" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationInOrderTest.java" start="152"/>
+</clone>
+</cloneclass>
+<cloneclass id="266">
+<clone>
+<fragment end="355" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationInOrderTest.java" start="304"/>
+</clone>
+<clone>
+<fragment end="432" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationInOrderTest.java" start="381"/>
+</clone>
+<clone>
+<fragment end="543" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationInOrderTest.java" start="492"/>
+</clone>
+</cloneclass>
+<cloneclass id="270">
+<clone>
+<fragment end="93" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationChunkInOrderTest.java" start="43"/>
+</clone>
+<clone>
+<fragment end="143" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationChunkInOrderTest.java" start="93"/>
+</clone>
+</cloneclass>
+<cloneclass id="268">
+<clone>
+<fragment end="238" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationChunkInOrderTest.java" start="186"/>
+</clone>
+<clone>
+<fragment end="311" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationChunkInOrderTest.java" start="259"/>
+</clone>
+</cloneclass>
+<cloneclass id="273">
+<clone>
+<fragment end="88" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationTest.java" start="33"/>
+</clone>
+<clone>
+<fragment end="143" file="mockito-master/src/test/java/org/mockitousage/stacktrace/PointingStackTraceToActualInvocationTest.java" start="88"/>
+</clone>
+</cloneclass>
+<cloneclass id="274">
+<clone>
+<fragment end="64" file="mockito-master/src/test/java/org/mockitousage/annotation/WrongSetOfAnnotationsTest.java" start="11"/>
+</clone>
+<clone>
+<fragment end="117" file="mockito-master/src/test/java/org/mockitousage/annotation/WrongSetOfAnnotationsTest.java" start="64"/>
+</clone>
+</cloneclass>
+<cloneclass id="276">
+<clone>
+<fragment end="315" file="mockito-master/src/test/java/org/mockitousage/annotation/SpyAnnotationTest.java" start="251"/>
+</clone>
+<clone>
+<fragment end="379" file="mockito-master/src/test/java/org/mockitousage/annotation/SpyAnnotationTest.java" start="315"/>
+</clone>
+</cloneclass>
+<cloneclass id="279">
+<clone>
+<fragment end="54" file="mockito-master/src/test/java/org/mockitousage/bugs/CovariantOverrideTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="104" file="mockito-master/src/test/java/org/mockitousage/bugs/CovariantOverrideTest.java" start="54"/>
+</clone>
+</cloneclass>
+<cloneclass id="285">
+<clone>
+<fragment end="325" file="mockito-master/src/test/java/org/mockitousage/basicapi/MockingMultipleInterfacesTest.java" start="263"/>
+</clone>
+<clone>
+<fragment end="387" file="mockito-master/src/test/java/org/mockitousage/basicapi/MockingMultipleInterfacesTest.java" start="325"/>
+</clone>
+</cloneclass>
+<cloneclass id="293">
+<clone>
+<fragment end="187" file="mockito-master/src/test/java/org/mockitousage/basicapi/ReplacingObjectMethodsTest.java" start="85"/>
+</clone>
+<clone>
+<fragment end="289" file="mockito-master/src/test/java/org/mockitousage/basicapi/ReplacingObjectMethodsTest.java" start="187"/>
+</clone>
+</cloneclass>
+<cloneclass id="313">
+<clone>
+<fragment end="394" file="mockito-master/src/test/java/org/mockitousage/CompilationWarningsTest.java" start="11"/>
+</clone>
+<clone>
+<fragment end="1126" file="mockito-master/src/test/java/org/mockitousage/CompilationWarningsTest.java" start="743"/>
+</clone>
+</cloneclass>
+<cloneclass id="304">
+<clone>
+<fragment end="465" file="mockito-master/src/test/java/org/mockitousage/CompilationWarningsTest.java" start="243"/>
+</clone>
+<clone>
+<fragment end="1197" file="mockito-master/src/test/java/org/mockitousage/CompilationWarningsTest.java" start="975"/>
+</clone>
+</cloneclass>
+<cloneclass id="309">
+<clone>
+<fragment end="743" file="mockito-master/src/test/java/org/mockitousage/CompilationWarningsTest.java" start="353"/>
+</clone>
+<clone>
+<fragment end="1475" file="mockito-master/src/test/java/org/mockitousage/CompilationWarningsTest.java" start="1085"/>
+</clone>
+</cloneclass>
+<cloneclass id="314">
+<clone>
+<fragment end="351" file="mockito-master/src/test/java/org/mockitousage/MethodsImpl.java" start="281"/>
+</clone>
+<clone>
+<fragment end="435" file="mockito-master/src/test/java/org/mockitousage/MethodsImpl.java" start="365"/>
+</clone>
+<clone>
+<fragment end="477" file="mockito-master/src/test/java/org/mockitousage/MethodsImpl.java" start="407"/>
+</clone>
+</cloneclass>
+<cloneclass id="320">
+<clone>
+<fragment end="81" file="mockito-master/src/test/java/org/mockito/exceptions/base/MockitoSerializationIssueTest.java" start="11"/>
+</clone>
+<clone>
+<fragment end="166" file="mockito-master/src/test/java/org/mockito/exceptions/base/MockitoSerializationIssueTest.java" start="96"/>
+</clone>
+</cloneclass>
+<cloneclass id="322">
+<clone>
+<fragment end="81" file="mockito-master/src/test/java/org/mockito/internal/runners/RunnerFactoryTest.java" start="10"/>
+</clone>
+<clone>
+<fragment end="152" file="mockito-master/src/test/java/org/mockito/internal/runners/RunnerFactoryTest.java" start="81"/>
+</clone>
+</cloneclass>
+<cloneclass id="331">
+<clone>
+<fragment end="64" file="mockito-master/src/test/java/org/mockito/internal/exceptions/stacktrace/StackTraceFilterTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="184" file="mockito-master/src/test/java/org/mockito/internal/exceptions/stacktrace/StackTraceFilterTest.java" start="124"/>
+</clone>
+</cloneclass>
+<cloneclass id="327">
+<clone>
+<fragment end="322" file="mockito-master/src/test/java/org/mockito/internal/exceptions/stacktrace/StackTraceFilterTest.java" start="254"/>
+</clone>
+<clone>
+<fragment end="590" file="mockito-master/src/test/java/org/mockito/internal/exceptions/stacktrace/StackTraceFilterTest.java" start="522"/>
+</clone>
+</cloneclass>
+<cloneclass id="335">
+<clone>
+<fragment end="191" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/ParameterizedConstructorInstantiatorTest.java" start="137"/>
+</clone>
+<clone>
+<fragment end="292" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/ParameterizedConstructorInstantiatorTest.java" start="238"/>
+</clone>
+</cloneclass>
+<cloneclass id="342">
+<clone>
+<fragment end="217" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/ParameterizedConstructorInstantiatorTest.java" start="159"/>
+</clone>
+<clone>
+<fragment end="527" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/ParameterizedConstructorInstantiatorTest.java" start="469"/>
+</clone>
+</cloneclass>
+<cloneclass id="345">
+<clone>
+<fragment end="350" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/ParameterizedConstructorInstantiatorTest.java" start="261"/>
+</clone>
+<clone>
+<fragment end="449" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/ParameterizedConstructorInstantiatorTest.java" start="360"/>
+</clone>
+</cloneclass>
+<cloneclass id="354">
+<clone>
+<fragment end="147" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/FieldInitializerTest.java" start="79"/>
+</clone>
+<clone>
+<fragment end="283" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/FieldInitializerTest.java" start="215"/>
+</clone>
+</cloneclass>
+<cloneclass id="360">
+<clone>
+<fragment end="72" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/BeanPropertySetterTest.java" start="11"/>
+</clone>
+<clone>
+<fragment end="247" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/BeanPropertySetterTest.java" start="186"/>
+</clone>
+<clone>
+<fragment end="486" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/BeanPropertySetterTest.java" start="425"/>
+</clone>
+</cloneclass>
+<cloneclass id="385">
+<clone>
+<fragment end="816" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/GenericMetadataSupportTest.java" start="739"/>
+</clone>
+<clone>
+<fragment end="893" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/GenericMetadataSupportTest.java" start="816"/>
+</clone>
+<clone>
+<fragment end="1062" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/GenericMetadataSupportTest.java" start="985"/>
+</clone>
+</cloneclass>
+<cloneclass id="392">
+<clone>
+<fragment end="985" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/GenericMetadataSupportTest.java" start="893"/>
+</clone>
+<clone>
+<fragment end="1372" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/GenericMetadataSupportTest.java" start="1280"/>
+</clone>
+</cloneclass>
+<cloneclass id="390">
+<clone>
+<fragment end="1667" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/GenericMetadataSupportTest.java" start="1548"/>
+</clone>
+<clone>
+<fragment end="1786" file="mockito-master/src/test/java/org/mockito/internal/util/reflection/GenericMetadataSupportTest.java" start="1667"/>
+</clone>
+</cloneclass>
+<cloneclass id="401">
+<clone>
+<fragment end="81" file="mockito-master/src/test/java/org/mockito/internal/util/DefaultMockingDetailsTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="158" file="mockito-master/src/test/java/org/mockito/internal/util/DefaultMockingDetailsTest.java" start="81"/>
+</clone>
+</cloneclass>
+<cloneclass id="407">
+<clone>
+<fragment end="59" file="mockito-master/src/test/java/org/mockito/internal/matchers/MatchersPrinterTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="114" file="mockito-master/src/test/java/org/mockito/internal/matchers/MatchersPrinterTest.java" start="59"/>
+</clone>
+</cloneclass>
+<cloneclass id="459">
+<clone>
+<fragment end="92" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="39"/>
+</clone>
+<clone>
+<fragment end="220" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="167"/>
+</clone>
+</cloneclass>
+<cloneclass id="435">
+<clone>
+<fragment end="2250" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="2184"/>
+</clone>
+<clone>
+<fragment end="2382" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="2316"/>
+</clone>
+</cloneclass>
+<cloneclass id="442">
+<clone>
+<fragment end="2650" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="2514"/>
+</clone>
+<clone>
+<fragment end="2786" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="2650"/>
+</clone>
+</cloneclass>
+<cloneclass id="427">
+<clone>
+<fragment end="3535" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3287"/>
+</clone>
+<clone>
+<fragment end="3917" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3669"/>
+</clone>
+</cloneclass>
+<cloneclass id="447">
+<clone>
+<fragment end="3533" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3383"/>
+</clone>
+<clone>
+<fragment end="4106" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3956"/>
+</clone>
+<clone>
+<fragment end="4297" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4147"/>
+</clone>
+<clone>
+<fragment end="4488" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4338"/>
+</clone>
+<clone>
+<fragment end="4679" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4529"/>
+</clone>
+<clone>
+<fragment end="3724" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3574"/>
+</clone>
+<clone>
+<fragment end="3915" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3765"/>
+</clone>
+</cloneclass>
+<cloneclass id="432">
+<clone>
+<fragment end="3452" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3401"/>
+</clone>
+<clone>
+<fragment end="4789" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4738"/>
+</clone>
+<clone>
+<fragment end="3643" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3592"/>
+</clone>
+<clone>
+<fragment end="3834" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3783"/>
+</clone>
+<clone>
+<fragment end="4025" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="3974"/>
+</clone>
+<clone>
+<fragment end="4216" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4165"/>
+</clone>
+<clone>
+<fragment end="4407" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4356"/>
+</clone>
+<clone>
+<fragment end="4598" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4547"/>
+</clone>
+</cloneclass>
+<cloneclass id="494">
+<clone>
+<fragment end="5074" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4872"/>
+</clone>
+<clone>
+<fragment end="5276" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5074"/>
+</clone>
+</cloneclass>
+<cloneclass id="492">
+<clone>
+<fragment end="5072" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4904"/>
+</clone>
+<clone>
+<fragment end="6022" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5854"/>
+</clone>
+<clone>
+<fragment end="6224" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="6056"/>
+</clone>
+<clone>
+<fragment end="5274" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5106"/>
+</clone>
+</cloneclass>
+<cloneclass id="417">
+<clone>
+<fragment end="5046" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4992"/>
+</clone>
+<clone>
+<fragment end="6400" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="6346"/>
+</clone>
+<clone>
+<fragment end="5248" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5194"/>
+</clone>
+<clone>
+<fragment end="5430" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5376"/>
+</clone>
+<clone>
+<fragment end="5612" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5558"/>
+</clone>
+<clone>
+<fragment end="5794" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5740"/>
+</clone>
+<clone>
+<fragment end="5996" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5942"/>
+</clone>
+<clone>
+<fragment end="6198" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="6144"/>
+</clone>
+<clone>
+<fragment end="6725" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="6671"/>
+</clone>
+</cloneclass>
+<cloneclass id="418">
+<clone>
+<fragment end="5072" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="4992"/>
+</clone>
+<clone>
+<fragment end="5456" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5376"/>
+</clone>
+<clone>
+<fragment end="5638" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5558"/>
+</clone>
+<clone>
+<fragment end="5820" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5740"/>
+</clone>
+<clone>
+<fragment end="6751" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="6671"/>
+</clone>
+<clone>
+<fragment end="5274" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5194"/>
+</clone>
+<clone>
+<fragment end="6022" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="5942"/>
+</clone>
+<clone>
+<fragment end="6224" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="6144"/>
+</clone>
+</cloneclass>
+<cloneclass id="409">
+<clone>
+<fragment end="7166" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7060"/>
+</clone>
+<clone>
+<fragment end="7362" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7256"/>
+</clone>
+<clone>
+<fragment end="7554" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7448"/>
+</clone>
+<clone>
+<fragment end="7746" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7640"/>
+</clone>
+<clone>
+<fragment end="7938" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7832"/>
+</clone>
+<clone>
+<fragment end="8130" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="8024"/>
+</clone>
+<clone>
+<fragment end="8322" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="8216"/>
+</clone>
+<clone>
+<fragment end="8514" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="8408"/>
+</clone>
+<clone>
+<fragment end="8706" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="8600"/>
+</clone>
+</cloneclass>
+<cloneclass id="452">
+<clone>
+<fragment end="7391" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7199"/>
+</clone>
+<clone>
+<fragment end="7775" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7583"/>
+</clone>
+</cloneclass>
+<cloneclass id="449">
+<clone>
+<fragment end="7389" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7238"/>
+</clone>
+<clone>
+<fragment end="7965" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7814"/>
+</clone>
+<clone>
+<fragment end="8157" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="8006"/>
+</clone>
+<clone>
+<fragment end="8349" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="8198"/>
+</clone>
+<clone>
+<fragment end="8541" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="8390"/>
+</clone>
+<clone>
+<fragment end="7581" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7430"/>
+</clone>
+<clone>
+<fragment end="7773" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="7622"/>
+</clone>
+</cloneclass>
+<cloneclass id="446">
+<clone>
+<fragment end="8839" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="8753"/>
+</clone>
+<clone>
+<fragment end="8945" file="mockito-master/src/test/java/org/mockito/internal/matchers/apachecommons/EqualsBuilderTest.java" start="8859"/>
+</clone>
+</cloneclass>
+<cloneclass id="512">
+<clone>
+<fragment end="60" file="mockito-master/src/test/java/org/mockito/internal/matchers/ComparableMatchersTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="116" file="mockito-master/src/test/java/org/mockito/internal/matchers/ComparableMatchersTest.java" start="60"/>
+</clone>
+</cloneclass>
+<cloneclass id="529">
+<clone>
+<fragment end="176" file="mockito-master/src/test/java/org/mockito/internal/matchers/MatchersToStringTest.java" start="97"/>
+</clone>
+<clone>
+<fragment end="282" file="mockito-master/src/test/java/org/mockito/internal/matchers/MatchersToStringTest.java" start="203"/>
+</clone>
+</cloneclass>
+<cloneclass id="518">
+<clone>
+<fragment end="344" file="mockito-master/src/test/java/org/mockito/internal/matchers/MatchersToStringTest.java" start="282"/>
+</clone>
+<clone>
+<fragment end="438" file="mockito-master/src/test/java/org/mockito/internal/matchers/MatchersToStringTest.java" start="376"/>
+</clone>
+</cloneclass>
+<cloneclass id="523">
+<clone>
+<fragment end="492" file="mockito-master/src/test/java/org/mockito/internal/matchers/MatchersToStringTest.java" start="438"/>
+</clone>
+<clone>
+<fragment end="573" file="mockito-master/src/test/java/org/mockito/internal/matchers/MatchersToStringTest.java" start="519"/>
+</clone>
+</cloneclass>
+<cloneclass id="531">
+<clone>
+<fragment end="132" file="mockito-master/src/test/java/org/mockito/internal/invocation/SerializableMethodTest.java" start="78"/>
+</clone>
+<clone>
+<fragment end="186" file="mockito-master/src/test/java/org/mockito/internal/invocation/SerializableMethodTest.java" start="132"/>
+</clone>
+<clone>
+<fragment end="213" file="mockito-master/src/test/java/org/mockito/internal/invocation/SerializableMethodTest.java" start="159"/>
+</clone>
+</cloneclass>
+<cloneclass id="546">
+<clone>
+<fragment end="76" file="mockito-master/src/test/java/org/mockito/internal/invocation/ArgumentsComparatorTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="148" file="mockito-master/src/test/java/org/mockito/internal/invocation/ArgumentsComparatorTest.java" start="76"/>
+</clone>
+</cloneclass>
+<cloneclass id="533">
+<clone>
+<fragment end="508" file="mockito-master/src/test/java/org/mockito/internal/invocation/ArgumentsComparatorTest.java" start="443"/>
+</clone>
+<clone>
+<fragment end="573" file="mockito-master/src/test/java/org/mockito/internal/invocation/ArgumentsComparatorTest.java" start="508"/>
+</clone>
+</cloneclass>
+<cloneclass id="558">
+<clone>
+<fragment end="637" file="mockito-master/src/test/java/org/mockito/internal/invocation/ArgumentsComparatorTest.java" start="580"/>
+</clone>
+<clone>
+<fragment end="857" file="mockito-master/src/test/java/org/mockito/internal/invocation/ArgumentsComparatorTest.java" start="800"/>
+</clone>
+</cloneclass>
+<cloneclass id="560">
+<clone>
+<fragment end="719" file="mockito-master/src/test/java/org/mockito/internal/invocation/ArgumentsComparatorTest.java" start="645"/>
+</clone>
+<clone>
+<fragment end="793" file="mockito-master/src/test/java/org/mockito/internal/invocation/ArgumentsComparatorTest.java" start="719"/>
+</clone>
+</cloneclass>
+<cloneclass id="563">
+<clone>
+<fragment end="891" file="mockito-master/src/test/java/org/mockito/internal/invocation/InvocationsFinderTest.java" start="816"/>
+</clone>
+<clone>
+<fragment end="966" file="mockito-master/src/test/java/org/mockito/internal/invocation/InvocationsFinderTest.java" start="891"/>
+</clone>
+</cloneclass>
+<cloneclass id="569">
+<clone>
+<fragment end="382" file="mockito-master/src/test/java/org/mockito/internal/stubbing/InvocationContainerImplTest.java" start="322"/>
+</clone>
+<clone>
+<fragment end="442" file="mockito-master/src/test/java/org/mockito/internal/stubbing/InvocationContainerImplTest.java" start="382"/>
+</clone>
+</cloneclass>
+<cloneclass id="577">
+<clone>
+<fragment end="320" file="mockito-master/src/test/java/org/mockito/internal/stubbing/InvocationContainerImplStubbingTest.java" start="199"/>
+</clone>
+<clone>
+<fragment end="441" file="mockito-master/src/test/java/org/mockito/internal/stubbing/InvocationContainerImplStubbingTest.java" start="320"/>
+</clone>
+</cloneclass>
+<cloneclass id="575">
+<clone>
+<fragment end="318" file="mockito-master/src/test/java/org/mockito/internal/stubbing/InvocationContainerImplStubbingTest.java" start="254"/>
+</clone>
+<clone>
+<fragment end="439" file="mockito-master/src/test/java/org/mockito/internal/stubbing/InvocationContainerImplStubbingTest.java" start="375"/>
+</clone>
+</cloneclass>
+<cloneclass id="581">
+<clone>
+<fragment end="251" file="mockito-master/src/test/java/org/mockito/internal/verification/checkers/NumberOfInvocationsInOrderCheckerTest.java" start="145"/>
+</clone>
+<clone>
+<fragment end="357" file="mockito-master/src/test/java/org/mockito/internal/verification/checkers/NumberOfInvocationsInOrderCheckerTest.java" start="251"/>
+</clone>
+</cloneclass>
+<cloneclass id="589">
+<clone>
+<fragment end="249" file="mockito-master/src/test/java/org/mockito/internal/verification/checkers/NumberOfInvocationsInOrderCheckerTest.java" start="194"/>
+</clone>
+<clone>
+<fragment end="355" file="mockito-master/src/test/java/org/mockito/internal/verification/checkers/NumberOfInvocationsInOrderCheckerTest.java" start="300"/>
+</clone>
+</cloneclass>
+<cloneclass id="595">
+<clone>
+<fragment end="119" file="mockito-master/src/test/java/org/mockito/internal/verification/SmartPrinterTest.java" start="57"/>
+</clone>
+<clone>
+<fragment end="181" file="mockito-master/src/test/java/org/mockito/internal/verification/SmartPrinterTest.java" start="119"/>
+</clone>
+</cloneclass>
+<cloneclass id="596">
+<clone>
+<fragment end="243" file="mockito-master/src/test/java/org/mockito/internal/verification/SmartPrinterTest.java" start="181"/>
+</clone>
+<clone>
+<fragment end="305" file="mockito-master/src/test/java/org/mockito/internal/verification/SmartPrinterTest.java" start="243"/>
+</clone>
+</cloneclass>
+<cloneclass id="600">
+<clone>
+<fragment end="57" file="mockito-master/src/test/java/org/mockito/internal/debugging/LoggingListenerTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="110" file="mockito-master/src/test/java/org/mockito/internal/debugging/LoggingListenerTest.java" start="57"/>
+</clone>
+</cloneclass>
+<cloneclass id="601">
+<clone>
+<fragment end="64" file="mockito-master/src/test/java/org/mockito/internal/hamcrest/MatcherGenericTypeExtractorTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="164" file="mockito-master/src/test/java/org/mockito/internal/hamcrest/MatcherGenericTypeExtractorTest.java" start="104"/>
+</clone>
+</cloneclass>
+<cloneclass id="602">
+<clone>
+<fragment end="84" file="mockito-master/src/test/java/org/mockito/internal/hamcrest/MatcherGenericTypeExtractorTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="164" file="mockito-master/src/test/java/org/mockito/internal/hamcrest/MatcherGenericTypeExtractorTest.java" start="84"/>
+</clone>
+</cloneclass>
+<cloneclass id="632">
+<clone>
+<fragment end="98" file="mockito-master/src/test/java/org/mockito/internal/configuration/injection/SimpleArgumentResolverTest.java" start="43"/>
+</clone>
+<clone>
+<fragment end="298" file="mockito-master/src/test/java/org/mockito/internal/configuration/injection/SimpleArgumentResolverTest.java" start="243"/>
+</clone>
+</cloneclass>
+<cloneclass id="627">
+<clone>
+<fragment end="188" file="mockito-master/src/test/java/org/mockito/internal/configuration/injection/SimpleArgumentResolverTest.java" start="118"/>
+</clone>
+<clone>
+<fragment end="287" file="mockito-master/src/test/java/org/mockito/internal/configuration/injection/SimpleArgumentResolverTest.java" start="217"/>
+</clone>
+</cloneclass>
+<cloneclass id="637">
+<clone>
+<fragment end="157" file="mockito-master/src/test/java/org/mockito/internal/configuration/MockInjectionTest.java" start="104"/>
+</clone>
+<clone>
+<fragment end="210" file="mockito-master/src/test/java/org/mockito/internal/configuration/MockInjectionTest.java" start="157"/>
+</clone>
+<clone>
+<fragment end="263" file="mockito-master/src/test/java/org/mockito/internal/configuration/MockInjectionTest.java" start="210"/>
+</clone>
+</cloneclass>
+<cloneclass id="643">
+<clone>
+<fragment end="223" file="mockito-master/src/test/java/org/mockito/AnnotationsAreCopiedFromMockedTypeTest.java" start="126"/>
+</clone>
+<clone>
+<fragment end="320" file="mockito-master/src/test/java/org/mockito/AnnotationsAreCopiedFromMockedTypeTest.java" start="223"/>
+</clone>
+</cloneclass>
+<cloneclass id="649">
+<clone>
+<fragment end="595" file="mockito-master/src/test/java/org/mockito/AnnotationsAreCopiedFromMockedTypeTest.java" start="530"/>
+</clone>
+<clone>
+<fragment end="660" file="mockito-master/src/test/java/org/mockito/AnnotationsAreCopiedFromMockedTypeTest.java" start="595"/>
+</clone>
+</cloneclass>
+<cloneclass id="656">
+<clone>
+<fragment end="130" file="mockito-master/src/main/java/org/mockito/BDDMockito.java" start="72"/>
+</clone>
+<clone>
+<fragment end="216" file="mockito-master/src/main/java/org/mockito/BDDMockito.java" start="158"/>
+</clone>
+<clone>
+<fragment end="628" file="mockito-master/src/main/java/org/mockito/BDDMockito.java" start="570"/>
+</clone>
+<clone>
+<fragment end="738" file="mockito-master/src/main/java/org/mockito/BDDMockito.java" start="680"/>
+</clone>
+<clone>
+<fragment end="868" file="mockito-master/src/main/java/org/mockito/BDDMockito.java" start="810"/>
+</clone>
+</cloneclass>
+<cloneclass id="653">
+<clone>
+<fragment end="505" file="mockito-master/src/main/java/org/mockito/BDDMockito.java" start="408"/>
+</clone>
+<clone>
+<fragment end="835" file="mockito-master/src/main/java/org/mockito/BDDMockito.java" start="738"/>
+</clone>
+</cloneclass>
+<cloneclass id="654">
+<clone>
+<fragment end="628" file="mockito-master/src/main/java/org/mockito/BDDMockito.java" start="542"/>
+</clone>
+<clone>
+<fragment end="738" file="mockito-master/src/main/java/org/mockito/BDDMockito.java" start="652"/>
+</clone>
+</cloneclass>
+<cloneclass id="661">
+<clone>
+<fragment end="189" file="mockito-master/src/main/java/org/mockito/Mockito.java" start="131"/>
+</clone>
+<clone>
+<fragment end="316" file="mockito-master/src/main/java/org/mockito/Mockito.java" start="258"/>
+</clone>
+</cloneclass>
+<cloneclass id="662">
+<clone>
+<fragment end="464" file="mockito-master/src/main/java/org/mockito/exceptions/Reporter.java" start="410"/>
+</clone>
+<clone>
+<fragment end="518" file="mockito-master/src/main/java/org/mockito/exceptions/Reporter.java" start="464"/>
+</clone>
+</cloneclass>
+<cloneclass id="664">
+<clone>
+<fragment end="2155" file="mockito-master/src/main/java/org/mockito/exceptions/Reporter.java" start="2098"/>
+</clone>
+<clone>
+<fragment end="2731" file="mockito-master/src/main/java/org/mockito/exceptions/Reporter.java" start="2674"/>
+</clone>
+</cloneclass>
+<cloneclass id="667">
+<clone>
+<fragment end="1065" file="mockito-master/src/main/java/org/mockito/Matchers.java" start="1009"/>
+</clone>
+<clone>
+<fragment end="1121" file="mockito-master/src/main/java/org/mockito/Matchers.java" start="1065"/>
+</clone>
+</cloneclass>
+<cloneclass id="688">
+<clone>
+<fragment end="228" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="4"/>
+</clone>
+<clone>
+<fragment end="816" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="592"/>
+</clone>
+</cloneclass>
+<cloneclass id="679">
+<clone>
+<fragment end="172" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="116"/>
+</clone>
+<clone>
+<fragment end="396" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="340"/>
+</clone>
+<clone>
+<fragment end="592" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="536"/>
+</clone>
+<clone>
+<fragment end="788" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="732"/>
+</clone>
+<clone>
+<fragment end="200" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="144"/>
+</clone>
+<clone>
+<fragment end="368" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="312"/>
+</clone>
+<clone>
+<fragment end="564" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="508"/>
+</clone>
+<clone>
+<fragment end="760" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="704"/>
+</clone>
+</cloneclass>
+<cloneclass id="710">
+<clone>
+<fragment end="1292" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="1228"/>
+</clone>
+<clone>
+<fragment end="1644" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="1580"/>
+</clone>
+</cloneclass>
+<cloneclass id="680">
+<clone>
+<fragment end="1356" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="1292"/>
+</clone>
+<clone>
+<fragment end="1580" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="1516"/>
+</clone>
+<clone>
+<fragment end="1388" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="1324"/>
+</clone>
+<clone>
+<fragment end="1548" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="1484"/>
+</clone>
+</cloneclass>
+<cloneclass id="698">
+<clone>
+<fragment end="1388" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="1292"/>
+</clone>
+<clone>
+<fragment end="1580" file="mockito-master/src/main/java/org/mockito/AdditionalMatchers.java" start="1484"/>
+</clone>
+</cloneclass>
+<cloneclass id="711">
+<clone>
+<fragment end="276" file="mockito-master/src/main/java/org/mockito/internal/util/reflection/FieldInitializer.java" start="226"/>
+</clone>
+<clone>
+<fragment end="395" file="mockito-master/src/main/java/org/mockito/internal/util/reflection/FieldInitializer.java" start="345"/>
+</clone>
+</cloneclass>
+<cloneclass id="713">
+<clone>
+<fragment end="768" file="mockito-master/src/main/java/org/mockito/internal/util/reflection/FieldInitializer.java" start="657"/>
+</clone>
+<clone>
+<fragment end="1191" file="mockito-master/src/main/java/org/mockito/internal/util/reflection/FieldInitializer.java" start="1080"/>
+</clone>
+</cloneclass>
+<cloneclass id="720">
+<clone>
+<fragment end="1393" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="1286"/>
+</clone>
+<clone>
+<fragment end="1762" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="1655"/>
+</clone>
+<clone>
+<fragment end="1885" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="1778"/>
+</clone>
+<clone>
+<fragment end="2008" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="1901"/>
+</clone>
+<clone>
+<fragment end="2131" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="2024"/>
+</clone>
+<clone>
+<fragment end="2254" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="2147"/>
+</clone>
+<clone>
+<fragment end="2377" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="2270"/>
+</clone>
+<clone>
+<fragment end="1516" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="1409"/>
+</clone>
+<clone>
+<fragment end="1639" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="1532"/>
+</clone>
+</cloneclass>
+<cloneclass id="722">
+<clone>
+<fragment end="1517" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="1286"/>
+</clone>
+<clone>
+<fragment end="1763" file="mockito-master/src/main/java/org/mockito/internal/matchers/apachecommons/EqualsBuilder.java" start="1532"/>
+</clone>
+</cloneclass>
+<cloneclass id="736">
+<clone>
+<fragment end="146" file="mockito-master/src/main/java/org/mockito/internal/handler/InvocationNotifierHandler.java" start="95"/>
+</clone>
+<clone>
+<fragment end="209" file="mockito-master/src/main/java/org/mockito/internal/handler/InvocationNotifierHandler.java" start="158"/>
+</clone>
+</cloneclass>
+<cloneclass id="749">
+<clone>
+<fragment end="298" file="mockito-master/src/main/java/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java" start="222"/>
+</clone>
+<clone>
+<fragment end="393" file="mockito-master/src/main/java/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java" start="317"/>
+</clone>
+<clone>
+<fragment end="488" file="mockito-master/src/main/java/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java" start="412"/>
+</clone>
+<clone>
+<fragment end="336" file="mockito-master/src/main/java/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java" start="260"/>
+</clone>
+<clone>
+<fragment end="450" file="mockito-master/src/main/java/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java" start="374"/>
+</clone>
+</cloneclass>
+<cloneclass id="754">
+<clone>
+<fragment end="336" file="mockito-master/src/main/java/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java" start="222"/>
+</clone>
+<clone>
+<fragment end="488" file="mockito-master/src/main/java/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java" start="374"/>
+</clone>
+</cloneclass>
+<cloneclass id="756">
+<clone>
+<fragment end="193" file="mockito-master/src/main/java/org/mockito/internal/stubbing/StubberImpl.java" start="132"/>
+</clone>
+<clone>
+<fragment end="258" file="mockito-master/src/main/java/org/mockito/internal/stubbing/StubberImpl.java" start="197"/>
+</clone>
+</cloneclass>
+<cloneclass id="758">
+<clone>
+<fragment end="138" file="mockito-master/src/main/java/org/mockito/internal/progress/ArgumentMatcherStorageImpl.java" start="87"/>
+</clone>
+<clone>
+<fragment end="189" file="mockito-master/src/main/java/org/mockito/internal/progress/ArgumentMatcherStorageImpl.java" start="138"/>
+</clone>
+</cloneclass>
+<cloneclass id="761">
+<clone>
+<fragment end="61" file="mockito-master/subprojects/testng/src/test/java/org/mockitousage/testng/failuretests/TestNGShouldFailWhenMockitoListenerFailsTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="118" file="mockito-master/subprojects/testng/src/test/java/org/mockitousage/testng/failuretests/TestNGShouldFailWhenMockitoListenerFailsTest.java" start="61"/>
+</clone>
+<clone>
+<fragment end="175" file="mockito-master/subprojects/testng/src/test/java/org/mockitousage/testng/failuretests/TestNGShouldFailWhenMockitoListenerFailsTest.java" start="118"/>
+</clone>
+</cloneclass>
+<cloneclass id="765">
+<clone>
+<fragment end="71" file="mockito-master/subprojects/testng/src/test/java/org/mockitousage/testng/CaptorAnnotatedFieldShouldBeClearedTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="138" file="mockito-master/subprojects/testng/src/test/java/org/mockitousage/testng/CaptorAnnotatedFieldShouldBeClearedTest.java" start="71"/>
+</clone>
+</cloneclass>
+<cloneclass id="768">
+<clone>
+<fragment end="94" file="mockito-master/subprojects/testng/src/test/java/org/mockitousage/testng/MockFieldsShouldBeResetBetweenTestMethodsTest.java" start="4"/>
+</clone>
+<clone>
+<fragment end="184" file="mockito-master/subprojects/testng/src/test/java/org/mockitousage/testng/MockFieldsShouldBeResetBetweenTestMethodsTest.java" start="94"/>
+</clone>
+</cloneclass>
+</cloneclasses>

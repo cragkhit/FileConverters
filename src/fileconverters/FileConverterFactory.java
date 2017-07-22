@@ -36,6 +36,8 @@ public class FileConverterFactory {
 			fc = new FileConverterForConQAT();
 		} else if (type == IConstant.DECKARD_RESULT_FILE) {
 			fc = new FileConverterForDeckard();
+		} else if (type == IConstant.SOURCERERCC_RESULT_FILE) {
+			fc = new FileConverterForSCC();
 		}
 
 		return fc;

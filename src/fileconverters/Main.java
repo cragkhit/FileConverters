@@ -45,8 +45,10 @@ public class Main {
 		BasicConfigurator.configure();
 
 		if (args.length < 3) {
+			log.debug("GCF File Converter v.0.5\n");
 			log.debug("Usage: java -jar gcfFileConverter.jar <mode> <prefix path> <clone file>\n");
-			log.debug("   <mode>: 1=ccfx, 2=simscan, 3=CPD, 4=ConQAT, 5=iClones, 6=simian, 7=nicad, 8=deckard");
+			log.debug("   <mode>: 1=ccfx, 2=simscan, 3=CPD, 4=ConQAT, 5=iClones, "
+					+ "6=simian, 7=nicad, 8=deckard, 9=scc");
 			log.debug("   <prefix_path>: the unwanted prefix path that you want to remove from the output file.");
 			log.debug("   <clone_file>: the original clone file.");
 			log.debug("   [min_line]: minimum number of clone line.\n");
@@ -58,11 +60,13 @@ public class Main {
 			mode = args[0];
 			prefix = args[1];
 			cloneFile = args[2];
+			System.out.println(cloneFile);
+			
 			if (args.length == 4)
 				minLine = args[3];
 			else
 				minLine = "6";
-			
+		
 			// Option 1 - CCFinder
 			if (mode.trim().matches("1") || mode.trim().matches("ccfx")) {
 				printHeader("ccfx");
@@ -97,6 +101,10 @@ public class Main {
 				// Option 8 - Deckard
 				printHeader("Deckard");
 				processDeckard(args);
+			} else if (mode.trim().matches("9") || mode.trim().matches("scc")) {
+				// Option 9 - SourcererCC
+				printHeader("SourcererCC");
+				processSCC(args);
 			} else {
 				log.error("Incorrect tool specified: " + mode.trim() + ". Please check again.");
 				System.exit(-1);
@@ -112,6 +120,7 @@ public class Main {
 	}
 
 	public static void saveConvertedFile(String filename, String filecontent) {
+		System.out.println("Saved as : " + filename);
 		java.io.File f = new java.io.File(filename);
 		java.io.FileWriter out = null;
 		try {
@@ -989,6 +998,60 @@ public class Main {
 		}
 		
 		return doc;
+	}
+	
+	private static void processSCC(String[] args) {
+		if (args.length < 6) {
+			log.debug("Please input the right paramenters");
+			log.debug("Usage: java -jar gcf_Fileconverter.jar <9 or scc> "
+					+ "<basepath> <SourcererCC's clone file location>"
+					+ "<SourcererCC's 1st headers file location> "
+					+ "<SourcererCC's 2nd headers file location> "
+					+ "[minline (optional -- 6: default)]");
+			log.debug("Example: java -jar gcf_Fileconverter.jar scc"
+					+ " /path/to/remove/ /home/tokens_soclones_index_WITH_FILTER.txt"
+					+ " /home/headers.file");
+			System.exit(-1);
+		}
+		if (args.length == 6)
+			minLine = args[5];
+		else
+			minLine = "6";
+		
+		// create an array list to store all clone fragments
+		ArrayList<String> argList = new ArrayList<String>();
+		for (int i=0; i<args.length; i++)
+			argList.add(args[i]); 
+		
+		String output = new FileConverterFactory().createFileConverter(IConstant.SOURCERERCC_RESULT_FILE)
+				.convert(new File(cloneFile.trim()), argList);
+		String filename = cloneFile.trim();
+		
+		String tmpfileName = filename + "_temp.xml";
+		saveConvertedFile(tmpfileName, output);
+		
+		ArrayList<String> strlist = new ArrayList<String>();
+		String filecontent = readConvertedFile(tmpfileName, strlist);
+		String GCFfile = "";
+		
+		if (args.length < 6) {
+			GCFfile = converteToGCF(strlist);
+		} else {
+			int minlineInt = Integer.parseInt(minLine);
+			GCFfile = converteToGCFmin(strlist, minlineInt);
+		}
+		filename += "-GCF";
+		saveConvertedFile(filename + ".xml", GCFfile);
+		
+		// remove the temp file
+		File tmpfile = new File(tmpfileName);
+
+		if (tmpfile.delete()) {
+			System.out.println(tmpfile.getName() + " is deleted!");
+		} else {
+			System.out.println("Delete operation is failed.");
+		}
+		log.debug("Creating GCF file at " + filename + ".xml");
 	}
 	
 	public static void writeXML(Document doc, String gcffilename) {

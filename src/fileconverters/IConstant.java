@@ -24,6 +24,7 @@ public class IConstant {
     public static final int CPD_RESULT_FILE = 1007;
     public static final int CONQAT_RESULT_FILE = 1008;
     public static final int DECKARD_RESULT_FILE = 1009;
+	public static final int SOURCERERCC_RESULT_FILE = 1010;
     
     //COnstants related with granularity of clone
     public static int GRANULARITY_FUNCTION = 2001;

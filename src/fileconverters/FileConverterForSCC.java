@@ -58,6 +58,8 @@ public class FileConverterForSCC extends Fileconverters {
 				// 1st one
 				// retrieve the file info
 				String[] file1 = headersList1.get(Integer.parseInt(clones[0]));
+				System.out.println("clone id: " + clones[0]);
+				System.out.println("clone file: " + headersList1.get(Integer.parseInt(clones[0])).length);
 				
 				sbfilecontent.append("\n<source file=\"");
 				sbfilecontent.append(file1[1]);

@@ -712,6 +712,7 @@ public class Main {
 						sb.append(strid);
 						sb.append("</ID>\r\n");
 
+						int fragmentcountofclass = 0;
 						int numf = nfragment;
 						int strindex = lineCount + 1;
 						
@@ -781,6 +782,7 @@ public class Main {
 							
 							// Only add clone to the result if the size is larger than minimum line
 							if (lines >= minCloneLine) {
+								fragmentcountofclass++;
 								if (minimumLines == 0 || lines < minimumLines) {
 									minimumLines = lines;
 								}
@@ -798,12 +800,17 @@ public class Main {
 								sb.append("</End>\r\n");
 								sb.append(tab + tab + tab + "</Fragment>\r\n");
 								sb.append(tab + tab + "</Clone>\r\n");
+							} else {
+								log.debug(lines + " vs. " + minCloneLine);
+								log.debug(filepath.replace(prefix, "") + " (" + startline + "," + endline + ")");
 							}
 							strindex++;
 							numf--;
 						} 
+						
+						if (foundAClass && reachEndClass && fragmentcountofclass >= 2) {
+//						if (foundAClass && reachEndClass) {	
 
-						if (foundAClass && reachEndClass) {
 							sbGCFfile.append(sb.toString());
 							sbGCFfile.append("</CloneClass>\r\n");
 						}

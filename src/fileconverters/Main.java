@@ -800,17 +800,17 @@ public class Main {
 								sb.append("</End>\r\n");
 								sb.append(tab + tab + tab + "</Fragment>\r\n");
 								sb.append(tab + tab + "</Clone>\r\n");
-							} else {
-								log.debug(lines + " vs. " + minCloneLine);
-								log.debug(filepath.replace(prefix, "") + " (" + startline + "," + endline + ")");
-							}
+							} 
+							// TODO: only used when debugging
+//							else {
+//								log.debug(lines + " vs. " + minCloneLine);
+//								log.debug(filepath.replace(prefix, "") + " (" + startline + "," + endline + ")");
+//							}
 							strindex++;
 							numf--;
 						} 
 						
 						if (foundAClass && reachEndClass && fragmentcountofclass >= 2) {
-//						if (foundAClass && reachEndClass) {	
-
 							sbGCFfile.append(sb.toString());
 							sbGCFfile.append("</CloneClass>\r\n");
 						}
@@ -1040,13 +1040,13 @@ public class Main {
 		saveConvertedFile(filename + ".xml", GCFfile);
 		
 		// remove the temp file
-//		File tmpfile = new File(tmpfileName);
-//
-//		if (tmpfile.delete()) {
-//			System.out.println(tmpfile.getName() + " is deleted!");
-//		} else {
-//			System.out.println("Delete operation is failed.");
-//		}
+		File tmpfile = new File(tmpfileName);
+
+		if (tmpfile.delete()) {
+			log.debug(tmpfile.getName() + " is deleted!");
+		} else {
+			log.error("Delete operation is failed.");
+		}
 		log.debug("Creating GCF file at " + filename + ".xml");
 	}
 	

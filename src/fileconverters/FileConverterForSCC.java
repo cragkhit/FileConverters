@@ -16,11 +16,9 @@ public class FileConverterForSCC extends Fileconverters {
 	@Override
 	public String convert(File file, ArrayList<String> argslist) {
 		// log setup
-		log = Logger.getLogger(FileConverterForDeckard.class);
+		log = Logger.getLogger(FileConverterForSCC.class);
 		// set logging level
 		log.setLevel(Level.DEBUG);
-		// use basic configuration
-		BasicConfigurator.configure();
 
 		/// variables
 		String basepath = argslist.get(1).toString(); // get base path
@@ -28,9 +26,9 @@ public class FileConverterForSCC extends Fileconverters {
 		String headers2 = argslist.get(4).toString(); // get the 1st header file
 		
 		ArrayList<String[]> headersList1 = readHeadersFile(headers1, basepath);
-		System.out.println("header 1 size: " + headersList1.size());
+		log.debug("header 1 size: " + headersList1.size());
 		ArrayList<String[]> headersList2 = readHeadersFile(headers2, basepath);
-		System.out.println("header 2 size: " + headersList2.size());
+		log.debug("header 2 size: " + headersList2.size());
 		
 		int cloneClassId = 1; // starting clone class id. Each clone class has a different id
 		int cloneId = 1; // starting clone id. Each clone has different id.
@@ -45,9 +43,7 @@ public class FileConverterForSCC extends Fileconverters {
 			LineNumberReader lr = new LineNumberReader(new FileReader(file));
 
 			while ((str = lr.readLine()) != null) {
-				
 				String[] clones = str.split(",");
-				
 				sbfilecontent.append("\n<class id=\"");
 				sbfilecontent.append(cloneClassId);
 				sbfilecontent.append("\" nlines=\"");
@@ -58,8 +54,8 @@ public class FileConverterForSCC extends Fileconverters {
 				// 1st one
 				// retrieve the file info
 				String[] file1 = headersList1.get(Integer.parseInt(clones[0]));
-				System.out.println("clone id: " + clones[0]);
-				System.out.println("clone file: " + headersList1.get(Integer.parseInt(clones[0])).length);
+//				System.out.println("clone id: " + clones[0]);
+//				System.out.println("clone file: " + headersList1.get(Integer.parseInt(clones[0])).length);
 				
 				sbfilecontent.append("\n<source file=\"");
 				sbfilecontent.append(file1[1]);
@@ -92,6 +88,7 @@ public class FileConverterForSCC extends Fileconverters {
 				sbfilecontent.append("\n");
 				sbfilecontent.append("</class>");
 				
+//				System.out.println("Done: " + cloneClassId);
 				cloneClassId++;
 			}
 			lr.close();
@@ -109,8 +106,8 @@ public class FileConverterForSCC extends Fileconverters {
 	}
 	
 	private ArrayList<String[]> readHeadersFile(String headersfile, String basepath) {
-		System.out.println("reading headers file: " + headersfile);
-		System.out.println("base path: " + basepath);
+		log.debug("reading headers file: " + headersfile);
+		log.debug("base path: " + basepath);
 		
 		ArrayList<String[]> headers = new ArrayList<String[]>();
 		LineNumberReader lr;

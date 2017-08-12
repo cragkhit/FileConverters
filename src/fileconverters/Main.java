@@ -1,11 +1,8 @@
 package fileconverters;
 
 import fileconverters.IConstant;
-
 import java.io.File;
-import java.nio.file.Files;
 import java.util.ArrayList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -16,11 +13,9 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -28,7 +23,7 @@ import org.w3c.dom.Element;
  * This class is modified further to match with needs of CloPlag experiment by
  * Chaiyong R.
  *
- * @author parvez
+ * @author Tian Tian Wang
  * @author Chaiyong R.
  */
 public class Main {
@@ -60,7 +55,7 @@ public class Main {
 			mode = args[0];
 			prefix = args[1];
 			cloneFile = args[2];
-			System.out.println(cloneFile);
+//			log.debug(cloneFile);
 			
 			if (args.length == 4)
 				minLine = args[3];
@@ -116,13 +111,12 @@ public class Main {
 	}
 	
 	public static void printHeader(String toolName) {
-		log.debug("GCFFileConverter (v 0.3) ...");
-		String[] tools = {"ccfx", "simscan", "CPD", "ConQAT", "iClones", "Simian", "NiCad", "Deckard" };
+		log.debug("GCFFileConverter (v 0.4) ...");
 		log.debug("Converting " + toolName + " clone report into GCF format...");
 	}
 
 	public static void saveConvertedFile(String filename, String filecontent) {
-		System.out.println("Saved as : " + filename);
+		log.debug("Saved as : " + filename);
 		java.io.File f = new java.io.File(filename);
 		java.io.FileWriter out = null;
 		try {
@@ -185,7 +179,7 @@ public class Main {
 
 		saveConvertedFile(filename + "temp.xml", output);
 		ArrayList<String> strlist = new ArrayList<String>();
-		String filecontent = readConvertedFile(filename + "temp.xml", strlist);
+		strlist = readConvertedFile(filename + "temp.xml");
 		String GCFfile = "";
 		if (args.length < 4) {
 			GCFfile = converteToGCF(strlist);
@@ -232,7 +226,7 @@ public class Main {
 		String tmpfileName = filename + "_temp.xml";
 		saveConvertedFile(tmpfileName, output);
 		ArrayList<String> strlist = new ArrayList<String>();
-		String filecontent = readConvertedFile(tmpfileName, strlist);
+		strlist = readConvertedFile(tmpfileName);
 		String GCFfile = "";
 		
 		if (args.length < 4) {
@@ -271,7 +265,6 @@ public class Main {
 			list.add(args[5]);
 		}
 
-		String strfile = cloneFile;
 		String output = new FileConverterFactory().createFileConverter(
 				IConstant.CCFINDER_RESULT_FILE).convert(new File(cloneFile), list);
 
@@ -280,7 +273,7 @@ public class Main {
 		
 		ArrayList<String> strlist = new ArrayList<String>();
 
-		String filecontent = readConvertedFile(filename[0] + "temp.xml", strlist);
+		strlist = readConvertedFile(filename[0] + "temp.xml");
 		String GCFfile = "";
 		
 		// check if the MinLine is provided or not
@@ -382,7 +375,7 @@ public class Main {
 		saveConvertedFile(filename[0] + "temp.xml", output);
 		log.debug("Filename = " + filename[0]);
 		ArrayList<String> strlist = new ArrayList<String>();
-		String filecontent = readConvertedFile(filename[0] + "temp.xml", strlist);
+		strlist = readConvertedFile(filename[0] + "temp.xml");
 
 		String GCFfile = "";
 		if (args.length < 4) {
@@ -427,7 +420,7 @@ public class Main {
 
 		ArrayList<String> strlist = new ArrayList<String>();
 		// read each line into an array list: strlist
-		String filecontent = readConvertedFile(filename[0] + "temp.xml", strlist);
+		strlist = readConvertedFile(filename[0] + "temp.xml");
 		// log.debug("readConvertedFile");
 		// log.debug(strlist.size());
 
@@ -454,35 +447,34 @@ public class Main {
 		}
 	}
 
-	public static String readConvertedFile(String filename, ArrayList<String> list) {
+	public static ArrayList<String> readConvertedFile(String fileName) {
 		java.io.BufferedReader infile = null;
 		// Get file name from the text field
 		String inLine;
-		String filecontent = "";
+		ArrayList<String> lines = new ArrayList<>();
 
 		try {
 			// Create a buffered stream
-			infile = new java.io.BufferedReader(
-					new java.io.FileReader(filename));
+			infile = new java.io.BufferedReader(new java.io.FileReader(fileName));
 			// Read a line
 			inLine = infile.readLine();
-			boolean firstLine = true;
-
 			while (inLine != null) {
-				list.add(inLine);
+				lines.add(inLine);
 				inLine = infile.readLine();
 			}
 		} catch (java.io.FileNotFoundException ex) {
-			log.error("File not found: " + filename);
+			log.error("File not found: " + fileName);
 		} catch (java.io.IOException ex) {
 			log.error(ex.getMessage());
 		} finally {
 			try {
 				if (infile != null) infile.close();
-			} catch (java.io.IOException ex) { log.error(ex.getMessage()); }
+			} catch (java.io.IOException ex) { 
+				log.error(ex.getMessage()); 
+			}
 		}
 		
-		return filecontent;
+		return lines;
 	}
 
 	public static String converteToGCF(ArrayList<String> strlist) {
@@ -506,10 +498,7 @@ public class Main {
 					if (strlist.get(endclassIndex).startsWith("</class>")) {
 						endclass = true;
 						findclass = true;
-						int idpo;
 						int i = 0;
-						int num = 1;
-						int nid = 0;
 						int nfragment = 0;
 						String strid = "";
 						
@@ -656,31 +645,28 @@ public class Main {
 		return sbGCFfile.toString();
 	}
 
-	public static String converteToGCFmin(ArrayList<String> strlist, int minimumlines) {
-		log.debug("in converteToGCFMin");
+	public static String converteToGCFmin(ArrayList<String> convertedFileLines, int minCloneLine) {
+		log.debug("No. of lines: " + convertedFileLines.size());
 		StringBuffer sbGCFfile = new StringBuffer();
 		sbGCFfile.append("<CloneClasses>\r\n");
-
-		int classIndex = 0;
+		int lineCount = 0;
 		int endclassIndex = 0;
-		boolean findclass = false;
-		boolean endclass = false;
+		boolean foundAClass = false;
+		boolean reachEndClass = false;
 		int minimumLines = 0;
 		
-		while (classIndex < strlist.size()) {
-			if (strlist.get(classIndex).startsWith("<class")) {
-				String classInfo = strlist.get(classIndex);
-				endclassIndex = classIndex + 1;
-				endclass = false;
+		while (lineCount < convertedFileLines.size()) {
+			// get the head of each clone class
+			if (convertedFileLines.get(lineCount).startsWith("<class")) {
+				String classInfo = convertedFileLines.get(lineCount);
+				endclassIndex = lineCount + 1;
+				reachEndClass = false;
 
-				while (endclassIndex < strlist.size() && !endclass) {
-					if (strlist.get(endclassIndex).startsWith("</class>")) {
-						endclass = true;
-						findclass = true;
-						int idpo;
+				while (endclassIndex < convertedFileLines.size() && !reachEndClass) {
+					if (convertedFileLines.get(endclassIndex).startsWith("</class>")) {
+						reachEndClass = true;
+						foundAClass = true;
 						int i = 0;
-						int num = 1;
-						int nid = 0;
 						int nfragment = 0;
 						String strid = "";
 
@@ -695,10 +681,8 @@ public class Main {
 										endid = true;
 										i = j;
 										strid = classInfo.substring(start, j); 
-									} else {
+									} else 
 										j++;
-									}
-
 								}
 							}
 							
@@ -714,15 +698,13 @@ public class Main {
 										strfrag = classInfo.substring(startfrag, k);
 										nfragment = Integer.parseInt(strfrag);
 
-									} else {
+									} else
 										k++;
-									}
-
 								}
-
 							}
 							i++;
 						}
+						
 						String tab = "    ";
 						StringBuffer sb = new StringBuffer();
 						sb.append("<CloneClass>\r\n");
@@ -730,29 +712,30 @@ public class Main {
 						sb.append(strid);
 						sb.append("</ID>\r\n");
 
-						int fragmentcountofclass = 0;
 						int numf = nfragment;
-						int strindex = classIndex + 1;
-						while (numf > 0 && strindex < endclassIndex
-								&& strindex < strlist.size()) {
-							String strfragment = strlist.get(strindex);
+						int strindex = lineCount + 1;
+						
+						while (numf > 0 
+								&& strindex < endclassIndex
+								&& strindex < convertedFileLines.size()) {
+							String fragmentLine = convertedFileLines.get(strindex);
 							String startline = "";
 							String endline = "";
 							String filepath = "";
 
-							if (strfragment.startsWith("<source file=")) {
-								int findex = 0;
-								while (findex < strfragment.length()) {
-									if (strfragment.regionMatches(findex, "file=", 0, 5)) {
-										int startf = findex + 6;
+							if (fragmentLine.startsWith("<source file=")) {
+								int fileIndex = 0;
+								while (fileIndex < fragmentLine.length()) {
+									if (fragmentLine.regionMatches(fileIndex, "file=", 0, 5)) {
+										int startf = fileIndex + 6;
 										int endf = startf + 1;
 										boolean bendf = false;
-										while (endf < strfragment.length() && !bendf) {
-											if (strfragment.regionMatches(endf, "\"", 0, 1)) {
+										while (endf < fragmentLine.length() && !bendf) {
+											if (fragmentLine.regionMatches(endf, "\"", 0, 1)) {
 												bendf = true;
 
-												filepath = strfragment.substring(startf, endf);
-												findex = endf;
+												filepath = fragmentLine.substring(startf, endf);
+												fileIndex = endf;
 											} else {
 												endf++;
 											}
@@ -760,15 +743,15 @@ public class Main {
 									}
 									
 									// Start line
-									if (strfragment.regionMatches(findex,"startline=", 0, 10)) {
-										int startf = findex + 11;
+									if (fragmentLine.regionMatches(fileIndex,"startline=", 0, 10)) {
+										int startf = fileIndex + 11;
 										int endf = startf + 1;
 										boolean bendf = false;
-										while (endf < strfragment.length() && !bendf) {
-											if (strfragment.regionMatches(endf, "\"", 0, 1)) {
+										while (endf < fragmentLine.length() && !bendf) {
+											if (fragmentLine.regionMatches(endf, "\"", 0, 1)) {
 												bendf = true;
-												startline = strfragment.substring(startf, endf);
-												findex = endf;
+												startline = fragmentLine.substring(startf, endf);
+												fileIndex = endf;
 											} else {
 												endf++;
 											}
@@ -776,29 +759,28 @@ public class Main {
 									}
 									
 									// End line
-									if (strfragment.regionMatches(findex, "endline=", 0, 8)) {
-										int startf = findex + 9;
+									if (fragmentLine.regionMatches(fileIndex, "endline=", 0, 8)) {
+										int startf = fileIndex + 9;
 										int endf = startf + 1;
 										boolean bendf = false;
-										while (endf < strfragment.length() && !bendf) {
-											if (strfragment.regionMatches(endf, "\"", 0, 1)) {
+										while (endf < fragmentLine.length() && !bendf) {
+											if (fragmentLine.regionMatches(endf, "\"", 0, 1)) {
 												bendf = true;
-												endline = strfragment.substring(startf, endf);
-												findex = endf;
+												endline = fragmentLine.substring(startf, endf);
+												fileIndex = endf;
 											} else {
 												endf++;
 											}
 										}
 									}
-									findex++;
+									fileIndex++;
 								}
 							}
 
 							int lines = Integer.parseInt(endline) - Integer.parseInt(startline) + 1;
 							
 							// Only add clone to the result if the size is larger than minimum line
-							if (lines >= minimumlines) {
-								fragmentcountofclass++;
+							if (lines >= minCloneLine) {
 								if (minimumLines == 0 || lines < minimumLines) {
 									minimumLines = lines;
 								}
@@ -821,16 +803,16 @@ public class Main {
 							numf--;
 						} 
 
-						if (findclass && endclass && fragmentcountofclass >= 2) {
+						if (foundAClass && reachEndClass) {
 							sbGCFfile.append(sb.toString());
 							sbGCFfile.append("</CloneClass>\r\n");
 						}
-						classIndex = endclassIndex;
+						lineCount = endclassIndex;
 					} 
 					else { endclassIndex++; }
 				}
 			}
-			classIndex++;
+			lineCount++;
 		}
 		sbGCFfile.append("</CloneClasses>\r\n");
 
@@ -863,7 +845,7 @@ public class Main {
 						if (strlist.get(endclassIndex).startsWith("</class>")) {
 							endclass = true;
 							findclass = true;
-							int idpo, i = 0, num = 1, nid = 0, nfragment = 0;
+							int i = 0, nfragment = 0;
 							String strid = "";
 							while (i < classInfo.length()) {
 								if (classInfo.regionMatches(i, "id=", 0, 3)) {
@@ -905,9 +887,6 @@ public class Main {
 							Element cloneClass = doc.createElement("cloneclass");
 							rootElement.appendChild(cloneClass);
 							cloneClass.setAttribute("id", strid);
-
-							String tab = "    ";
-							// sbGCFfile.append(tab + "<cloneclass id=\"" + strid + "\">\r\n");
 							int numf = nfragment;
 							int strindex = classIndex + 1;
 							while (numf > 0 && strindex < endclassIndex && strindex < strlist.size()) {
@@ -1032,34 +1011,35 @@ public class Main {
 		for (int i=0; i<args.length; i++)
 			argList.add(args[i]); 
 		
-		String output = new FileConverterFactory().createFileConverter(IConstant.SOURCERERCC_RESULT_FILE)
+		String output = new FileConverterFactory()
+				.createFileConverter(IConstant.SOURCERERCC_RESULT_FILE)
 				.convert(new File(cloneFile.trim()), argList);
 		String filename = cloneFile.trim();
 		
 		String tmpfileName = filename + "_temp.xml";
 		saveConvertedFile(tmpfileName, output);
 		
-		ArrayList<String> strlist = new ArrayList<String>();
-		String filecontent = readConvertedFile(tmpfileName, strlist);
+		ArrayList<String> convertedFileLines = new ArrayList<String>();
+		convertedFileLines = readConvertedFile(tmpfileName);
 		String GCFfile = "";
 		
 		if (args.length < 6) {
-			GCFfile = converteToGCF(strlist);
+			GCFfile = converteToGCF(convertedFileLines);
 		} else {
 			int minlineInt = Integer.parseInt(minLine);
-			GCFfile = converteToGCFmin(strlist, minlineInt);
+			GCFfile = converteToGCFmin(convertedFileLines, minlineInt);
 		}
 		filename += "-GCF";
 		saveConvertedFile(filename + ".xml", GCFfile);
 		
 		// remove the temp file
-		File tmpfile = new File(tmpfileName);
-
-		if (tmpfile.delete()) {
-			System.out.println(tmpfile.getName() + " is deleted!");
-		} else {
-			System.out.println("Delete operation is failed.");
-		}
+//		File tmpfile = new File(tmpfileName);
+//
+//		if (tmpfile.delete()) {
+//			System.out.println(tmpfile.getName() + " is deleted!");
+//		} else {
+//			System.out.println("Delete operation is failed.");
+//		}
 		log.debug("Creating GCF file at " + filename + ".xml");
 	}
 	

@@ -1,6 +1,6 @@
 package fileconverters;
 
-import fileconverters.ccfinder.TestClone;
+import fileconverters.ccfinder.CCFXCloneProcessor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class FileConverterForCCFinder extends Fileconverters{
      * Otherwise set this to null
      */
     public String convert(File resultFile, ArrayList list) {
-        TestClone tc = new  TestClone();
+        CCFXCloneProcessor tc = new  CCFXCloneProcessor();
         String output="";
         try {
             output =  tc.compute(resultFile.getAbsolutePath(), list);

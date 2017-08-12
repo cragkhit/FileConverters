@@ -8,7 +8,7 @@ public class MainClass {
 		// BufferedReader in= new BufferedReader(new
 		// FileReader("/users/riponsaha/ccJunit.txt"));
 
-		TestClone tc = new TestClone();
+		CCFXCloneProcessor tc = new CCFXCloneProcessor();
 		// System.out.println(""+tc.compute(Parameter.CCFINDER_OUTPUT));
 	}
 

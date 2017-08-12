@@ -14,14 +14,20 @@ public class LineNumber {
         this.ccfxprepdir = ccfxprepdir;
     }
 
-    int getLineNumber(String fname, int n) throws IOException {
-    		System.out.println("fname = " + fname);
+    /***
+     * Get line numbers from reading ccfxprepdir
+     * @param fname -- name of the clone file
+     * @param n -- the selected nth line
+     * @param prefix1 -- prefix of the path to remove
+     * @param prefix2 -- prefix (2nd) of the path to remove
+     * @return the line number
+     * @throws IOException
+     */
+    int getLineNumber(String fname, int n, String prefix1, String prefix2) throws IOException {
         GenerateIntFileName gen = new GenerateIntFileName(postfix, ccfxprepdir);
         String target = gen.generate(fname);
-        target = "ccfxprep/" + target.replace(Main.prefix, "");
-        System.out.println("prefix = " + Main.prefix);
-        System.out.println("target = " + target.replace(Main.prefix, ""));
-        BufferedReader in = new BufferedReader(new FileReader(target));
+        target = target.replace(prefix1, "").replace(prefix2, "");
+        BufferedReader in = new BufferedReader(new FileReader(ccfxprepdir + "/" + target));
         int i = 0;
         int lineNumber = 0;
         String str;

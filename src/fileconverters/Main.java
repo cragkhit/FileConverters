@@ -70,6 +70,8 @@ public class Main {
 			// Option 1 - CCFinder
 			if (mode.trim().matches("1") || mode.trim().matches("ccfx")) {
 				printHeader("ccfx");
+				if (args.length >= 5)
+					minLine = args[4];
 				processCCFinder(args);
 			} else if (mode.trim().matches("2") || mode.trim().matches("simscan")) {
 				// Option 2 - SimScan
@@ -256,10 +258,17 @@ public class Main {
 	public static void processCCFinder(String[] args) {
 		ArrayList<String> list = new ArrayList<String>();
 		
-		if (args.length < 2) {
+		if (args.length < 6) {
 			log.debug("Please Input the right paramenters");
-			log.debug("1 ccfinder-cook.txt");
+			log.debug("ccfx /path/to/remove/1 ccfx_clones.txt /location/of/ccfxprepdir minline <create clone class (true/false)>");
 			System.exit(-1);
+		} else {
+			list.add(args[0]);
+			list.add(args[1]);
+			list.add(args[2]);
+			list.add(args[3]);
+			list.add(args[4]);
+			list.add(args[5]);
 		}
 
 		String strfile = cloneFile;
@@ -275,12 +284,12 @@ public class Main {
 		String GCFfile = "";
 		
 		// check if the MinLine is provided or not
-		if (args.length < 4) {
+		if (args.length < 5) {
 			GCFfile = converteToGCF(strlist);
 			String gcffilename = filename[0] + "-GCF";
 			saveConvertedFile(gcffilename + ".xml", GCFfile);
 			log.debug("Creating GCF file at " + gcffilename + ".xml");
-		} else if (args.length == 4) {
+		} else if (args.length == 6) {
 			int minlineInt = Integer.parseInt(minLine);
 			GCFfile = converteToGCFmin(strlist, minlineInt);
 			String gcffilename = filename[0] + "-GCF";

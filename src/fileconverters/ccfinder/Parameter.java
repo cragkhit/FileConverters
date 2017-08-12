@@ -8,5 +8,5 @@ public interface Parameter {
 	public static final String CCFINDER_OUTPUT = "/home/parvez/result.txt"; // requires
 	public static final String WRITE_PATH = "/home/parvez/";
 	public static final String REPORT_NAME = "nicad1.xml";
-	public static final int MAX_FILE_NO = 5000;
+	public static final int MAX_FILE_NO = 1000000;
 }

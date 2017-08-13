@@ -32,6 +32,7 @@ public class Main {
 	public static String prefix = ""; 
 	private static String mode = "";
 	private static String minLine = "6";
+	private static String version = "0.6";
 
 	public static void main(String args[]) {
 		// initialize log4j logger
@@ -40,16 +41,18 @@ public class Main {
 		BasicConfigurator.configure();
 
 		if (args.length < 3) {
-			log.debug("GCF File Converter v.0.5\n");
-			log.debug("Usage: java -jar gcfFileConverter.jar <mode> <prefix path> <clone file>\n");
-			log.debug("   <mode>: 1=ccfx, 2=simscan, 3=CPD, 4=ConQAT, 5=iClones, "
+			System.out.println("GCF File Converter v. " + version + "\n");
+			System.out.println("Usage: java -jar gcfFileConverter.jar <mode> <prefix path> <clone file> [optional] [minline]\n");
+			System.out.println("   <mode>: 1=ccfx, 2=simscan, 3=CPD, 4=ConQAT, 5=iClones, "
 					+ "6=simian, 7=nicad, 8=deckard, 9=scc");
-			log.debug("   <prefix_path>: the unwanted prefix path that you want to remove from the output file.");
-			log.debug("   <clone_file>: the original clone file.");
-			log.debug("   [min_line]: minimum number of clone line.\n");
-			log.debug("Example: java -jar gcfFileConverter.jar ccfx /unwanted/path ccfx.txt 6");
-			log.debug("Example: java -jar gcfFileConverter.jar 6 /unwanted/path simian.txt");
-			log.debug("Example: java -jar gcfFileConverter.jar nicad /unwanted/path nicad.xml");
+			System.out.println("   <prefix_path>: the unwanted prefix path that you want to remove from the output file.");
+			System.out.println("   <clone_file>: the original clone file.");
+			System.out.println("   [optional]: for CCFX: location of ccfxpredir, for SourcererCC: location of the two header files.");
+			System.out.println("   [minline]: minimum number of clone line.\n");
+			System.out.println("Example: java -jar gcfFileConverter.jar ccfx /unwanted/path ccfx.txt /location/of/ccfxpredir 6");
+			System.out.println("Example: java -jar gcfFileConverter.jar 6 /unwanted/path simian.txt");
+			System.out.println("Example: java -jar gcfFileConverter.jar nicad /unwanted/path nicad.xml");
+			System.out.println("Example: java -jar gcfFileConverter.jar scc /unwanted/path clones.txt /headers/file/1 /headers/file/2");
 			System.exit(-1);
 		} else {
 			mode = args[0];
@@ -111,7 +114,7 @@ public class Main {
 	}
 	
 	public static void printHeader(String toolName) {
-		log.debug("GCFFileConverter (v 0.4) ...");
+		log.debug("GCFFileConverter (v. " + version+ ") ...");
 		log.debug("Converting " + toolName + " clone report into GCF format...");
 	}
 

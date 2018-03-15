@@ -443,11 +443,11 @@ public class Main {
 		
 		// remove the temp file
 		File tmpfile = new File(filename[0] + "temp.xml");
-		if (tmpfile.delete()) {
-			log.debug(tmpfile.getName() + " is deleted!");
-		} else {
-			log.error("Delete operation is failed.");
-		}
+//		if (tmpfile.delete()) {
+//			log.debug(tmpfile.getName() + " is deleted!");
+//		} else {
+//			log.error("Delete operation is failed.");
+//		}
 	}
 
 	public static ArrayList<String> readConvertedFile(String fileName) {
@@ -504,6 +504,7 @@ public class Main {
 						int i = 0;
 						int nfragment = 0;
 						String strid = "";
+						String similarity = "";
 						
 						while (i < classInfo.length()) {
 							if (classInfo.regionMatches(i, "id=", 0, 3)) {
@@ -523,25 +524,38 @@ public class Main {
 								}
 							}
 							
+							if (classInfo.regionMatches(i, "similarity=", 0, 11)) {
+								int start = i + 12;
+								int j = start + 1;
+								boolean endid = false;
+								// finding similarity
+								while (j < classInfo.length() && !endid) {
+									if (classInfo.regionMatches(j, "\"", 0, 1)) {
+										endid = true;
+										i = j;
+										similarity = classInfo.substring(start, j); 
+									} else {
+										j++;
+									}
+
+								}
+							}
+							
 							if (classInfo.regionMatches(i, "nfragments=", 0, 11)) {
 								int startfrag = i + 12;
 								int k = startfrag + 1;
 								boolean endfrag = false;
 								String strfrag = "";
 								while (k < classInfo.length() && !endfrag) {
-
 									if (classInfo.regionMatches(k, "\"", 0, 1)) {
 										endfrag = true;
 										i = k;
-										strfrag = classInfo.substring(
-												startfrag, k); // nfragments
-
+										strfrag = classInfo.substring(startfrag, k); // nfragments
 										nfragment = Integer.parseInt(strfrag);
 									} else {
 										k++;
 									}
 								}
-
 							}
 							i++;
 						}
@@ -551,6 +565,9 @@ public class Main {
 						sbGCFfile.append(tab + "<ID>");
 						sbGCFfile.append(strid);
 						sbGCFfile.append("</ID>\r\n");
+						sbGCFfile.append(tab + "<Similarity>");
+						sbGCFfile.append(similarity);
+						sbGCFfile.append("</Similarity>\r\n");
 						
 						int numf = nfragment;
 						int strindex = classIndex + 1;

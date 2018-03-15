@@ -36,10 +36,13 @@ public class FileConverterForNicad extends Fileconverters {
 					String id = tokenizedStr[1];
 					String strnfragments = tokenizedStr[3];
 					String nlines = tokenizedStr[5];
+					String sim = tokenizedStr[7];
 					String strclass = "<class id=\"";
 					strclass += id;
 					strclass += "\" nlines=\"";
 					strclass += nlines;
+					strclass += "\" similarity=\"";
+					strclass += sim;
 					strclass += "\" nfragments=\"";
 					strclass += strnfragments;
 					strclass += "\">\r\n";

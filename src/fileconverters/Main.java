@@ -999,7 +999,7 @@ public class Main {
 	}
 	
 	private static void processSCC(String[] args) {
-		if (args.length < 6) {
+		if (args.length < 5) {
 			log.debug("Please input the right paramenters");
 			log.debug("Usage: java -jar gcf_Fileconverter.jar <9 or scc> "
 					+ "<basepath> <SourcererCC's clone file location>"
@@ -1008,7 +1008,7 @@ public class Main {
 					+ "[minline (optional -- 6: default)]");
 			log.debug("Example: java -jar gcf_Fileconverter.jar scc"
 					+ " /path/to/remove/ /home/tokens_soclones_index_WITH_FILTER.txt"
-					+ " /home/headers.file");
+					+ " /home/headers1.file /home/headers2.file");
 			System.exit(-1);
 		}
 		if (args.length == 6)

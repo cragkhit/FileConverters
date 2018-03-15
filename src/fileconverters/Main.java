@@ -481,46 +481,48 @@ public class Main {
 	}
 
 	public static String converteToGCF(ArrayList<String> strlist) {
-		log.debug("in converteToGCF");
+		return converteToGCFmin(strlist, 0);
+	}
+
+	public static String converteToGCFmin(ArrayList<String> convertedFileLines, int minCloneLine) {
+		log.debug("No. of lines: " + convertedFileLines.size());
 		StringBuffer sbGCFfile = new StringBuffer();
 		sbGCFfile.append("<CloneClasses>\r\n");
-
-		int classIndex = 0;
+		int lineCount = 0;
 		int endclassIndex = 0;
-		boolean findclass = false;
-		boolean endclass = false;
+		boolean foundAClass = false;
+		boolean reachEndClass = false;
 		int minimumLines = 0;
-		while (classIndex < strlist.size()) {
-			// System.out.println("classIndex=" + classIndex + ": " + strlist.get(classIndex));
-			if (strlist.get(classIndex).startsWith("<class")) {
-				String classInfo = strlist.get(classIndex);
-				endclassIndex = classIndex + 1;
-				endclass = false;
+		
+		while (lineCount < convertedFileLines.size()) {
+			// get the head of each clone class
+			if (convertedFileLines.get(lineCount).startsWith("<class")) {
+				String classInfo = convertedFileLines.get(lineCount);
+				endclassIndex = lineCount + 1;
+				reachEndClass = false;
 
-				while (endclassIndex < strlist.size() && !endclass) {
-					if (strlist.get(endclassIndex).startsWith("</class>")) {
-						endclass = true;
-						findclass = true;
+				while (endclassIndex < convertedFileLines.size() && !reachEndClass) {
+					if (convertedFileLines.get(endclassIndex).startsWith("</class>")) {
+						reachEndClass = true;
+						foundAClass = true;
 						int i = 0;
 						int nfragment = 0;
 						String strid = "";
 						String similarity = "";
-						
+
 						while (i < classInfo.length()) {
 							if (classInfo.regionMatches(i, "id=", 0, 3)) {
 								int start = i + 4;
 								int j = start + 1;
 								boolean endid = false;
-								// finding id
+
 								while (j < classInfo.length() && !endid) {
 									if (classInfo.regionMatches(j, "\"", 0, 1)) {
 										endid = true;
 										i = j;
 										strid = classInfo.substring(start, j); 
-									} else {
+									} else 
 										j++;
-									}
-
 								}
 							}
 							
@@ -550,171 +552,6 @@ public class Main {
 									if (classInfo.regionMatches(k, "\"", 0, 1)) {
 										endfrag = true;
 										i = k;
-										strfrag = classInfo.substring(startfrag, k); // nfragments
-										nfragment = Integer.parseInt(strfrag);
-									} else {
-										k++;
-									}
-								}
-							}
-							i++;
-						}
-						
-						String tab = "    ";
-						sbGCFfile.append(tab + "<CloneClass>\r\n");
-						sbGCFfile.append(tab + "<ID>");
-						sbGCFfile.append(strid);
-						sbGCFfile.append("</ID>\r\n");
-						sbGCFfile.append(tab + "<Similarity>");
-						sbGCFfile.append(similarity);
-						sbGCFfile.append("</Similarity>\r\n");
-						
-						int numf = nfragment;
-						int strindex = classIndex + 1;
-						while (numf > 0 && strindex < endclassIndex
-								&& strindex < strlist.size()) {
-							String strfragment = strlist.get(strindex);
-							String startline = "";
-							String endline = "";
-							String filepath = "";
-							if (strfragment.startsWith("<source file=")) {
-								int findex = 0;
-								while (findex < strfragment.length()) {
-									if (strfragment.regionMatches(findex,"file=", 0, 5)) {
-										int startf = findex + 6;
-										int endf = startf + 1;
-										boolean bendf = false;
-										while (endf < strfragment.length() && !bendf) {
-											if (strfragment.regionMatches(endf,"\"", 0, 1)) {
-												bendf = true;
-												filepath = strfragment.substring(startf, endf);
-												findex = endf;
-											} else {
-												endf++;
-											}
-										}
-									}
-									if (strfragment.regionMatches(findex, "startline=", 0, 10)) {
-										int startf = findex + 11;
-										int endf = startf + 1;
-										boolean bendf = false;
-										while (endf < strfragment.length() && !bendf) {
-											if (strfragment.regionMatches(endf, "\"", 0, 1)) {
-												bendf = true;
-												startline = strfragment.substring(startf, endf);
-												findex = endf;
-											} else {
-												endf++;
-											}
-										}
-									}
-									if (strfragment.regionMatches(findex, "endline=", 0, 8)) {
-										int startf = findex + 9;
-										int endf = startf + 1;
-										boolean bendf = false;
-										while (endf < strfragment.length() && !bendf) {
-											if (strfragment.regionMatches(endf, "\"", 0, 1)) {
-												bendf = true;
-												endline = strfragment.substring(startf, endf);
-												findex = endf;
-											} else {
-												endf++;
-											}
-										}
-									}
-									findex++;
-								}
-							}
-							sbGCFfile.append(tab + tab + "<Clone>\r\n");
-							sbGCFfile.append(tab + tab + tab + "<Fragment>\r\n");
-							sbGCFfile.append(tab + tab + tab + tab + "<File>");
-							// remove the unwanted prefix
-							sbGCFfile.append(filepath.replace(prefix, ""));
-							sbGCFfile.append("</File>\r\n");
-							sbGCFfile.append(tab + tab + tab + tab + "<Start>");
-							sbGCFfile.append(startline);
-							sbGCFfile.append("</Start>\r\n");
-							sbGCFfile.append(tab + tab + tab + tab + "<End>");
-							sbGCFfile.append(endline);
-							sbGCFfile.append("</End>\r\n");
-							sbGCFfile.append(tab + tab + tab + "</Fragment>\r\n");
-							sbGCFfile.append(tab + tab + "</Clone>\r\n");
-							
-							int lines = Integer.parseInt(endline) - Integer.parseInt(startline) + 1;
-							if (minimumLines == 0 || lines < minimumLines) {
-								minimumLines = lines;
-							}
-							strindex++;
-							numf--;
-						} 
-
-						if (findclass && endclass) {
-							sbGCFfile.append(tab + "</CloneClass>\r\n");
-						}
-						classIndex = endclassIndex;
-					} 
-					else {
-						endclassIndex++;
-					}
-				}
-			}
-			classIndex++;
-		}
-		sbGCFfile.append("</CloneClasses>\r\n");
-
-		return sbGCFfile.toString();
-	}
-
-	public static String converteToGCFmin(ArrayList<String> convertedFileLines, int minCloneLine) {
-		log.debug("No. of lines: " + convertedFileLines.size());
-		StringBuffer sbGCFfile = new StringBuffer();
-		sbGCFfile.append("<CloneClasses>\r\n");
-		int lineCount = 0;
-		int endclassIndex = 0;
-		boolean foundAClass = false;
-		boolean reachEndClass = false;
-		int minimumLines = 0;
-		
-		while (lineCount < convertedFileLines.size()) {
-			// get the head of each clone class
-			if (convertedFileLines.get(lineCount).startsWith("<class")) {
-				String classInfo = convertedFileLines.get(lineCount);
-				endclassIndex = lineCount + 1;
-				reachEndClass = false;
-
-				while (endclassIndex < convertedFileLines.size() && !reachEndClass) {
-					if (convertedFileLines.get(endclassIndex).startsWith("</class>")) {
-						reachEndClass = true;
-						foundAClass = true;
-						int i = 0;
-						int nfragment = 0;
-						String strid = "";
-
-						while (i < classInfo.length()) {
-							if (classInfo.regionMatches(i, "id=", 0, 3)) {
-								int start = i + 4;
-								int j = start + 1;
-								boolean endid = false;
-
-								while (j < classInfo.length() && !endid) {
-									if (classInfo.regionMatches(j, "\"", 0, 1)) {
-										endid = true;
-										i = j;
-										strid = classInfo.substring(start, j); 
-									} else 
-										j++;
-								}
-							}
-							
-							if (classInfo.regionMatches(i, "nfragments=", 0, 11)) {
-								int startfrag = i + 12;
-								int k = startfrag + 1;
-								boolean endfrag = false;
-								String strfrag = "";
-								while (k < classInfo.length() && !endfrag) {
-									if (classInfo.regionMatches(k, "\"", 0, 1)) {
-										endfrag = true;
-										i = k;
 										strfrag = classInfo.substring(startfrag, k);
 										nfragment = Integer.parseInt(strfrag);
 
@@ -731,6 +568,9 @@ public class Main {
 						sb.append(tab + "<ID>");
 						sb.append(strid);
 						sb.append("</ID>\r\n");
+						sb.append(tab + "<Similarity>");
+						sb.append(similarity);
+						sb.append("</Similarity>\r\n");
 
 						int fragmentcountofclass = 0;
 						int numf = nfragment;
@@ -799,7 +639,6 @@ public class Main {
 							}
 
 							int lines = Integer.parseInt(endline) - Integer.parseInt(startline) + 1;
-							
 							// Only add clone to the result if the size is larger than minimum line
 							if (lines >= minCloneLine) {
 								fragmentcountofclass++;

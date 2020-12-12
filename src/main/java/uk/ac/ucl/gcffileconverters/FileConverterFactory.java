@@ -1,4 +1,4 @@
-package uk.ac.ucl.fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
 /*
  * To change this template, choose Tools | Templates

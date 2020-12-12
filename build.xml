@@ -5,7 +5,7 @@
     <property name="class.dir"      value="bin"/>
     <property name="jar.dir"        value="dist"/>
     <property name="jar.file"        value="${jar.dir}/${ant.project.name}.jar"/>
-    <property name="main-class"     value="main.java.uk.ac.ucl.fileconverters.Main"/>
+    <property name="main-class"     value="main.java.uk.ac.ucl.gcffileconverters.Main"/>
 
     <path id="libraries.path">    
         <fileset dir="${lib.dir}">

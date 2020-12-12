@@ -1,4 +1,4 @@
-package uk.ac.ucl.fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
 import main.java.uk.ac.ucl.fileconverters.ccfinder.CCFXCloneProcessor;
 import java.io.File;

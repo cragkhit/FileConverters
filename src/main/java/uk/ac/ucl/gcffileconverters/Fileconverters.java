@@ -22,7 +22,7 @@ import java.util.ArrayList;
 //}
 
 
-package uk.ac.ucl.fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
 
 import java.io.File;

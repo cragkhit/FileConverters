@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.ucl.fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
 import de.uni_bremen.st.rcf.persistence.*;
 import de.uni_bremen.st.rcf.model.*;

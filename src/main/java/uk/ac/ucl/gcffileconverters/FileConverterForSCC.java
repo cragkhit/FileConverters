@@ -1,4 +1,4 @@
-package uk.ac.ucl.fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
 import java.io.File;
 import java.io.FileNotFoundException;

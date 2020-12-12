@@ -1,6 +1,5 @@
-package fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
-import fileconverters.IConstant;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -32,7 +31,7 @@ public class Main {
 	public static String prefix = ""; 
 	private static String mode = "";
 	private static String minLine = "6";
-	private static String version = "0.6";
+	private static String version = "0.7";
 
 	public static void main(String args[]) {
 		// initialize log4j logger
@@ -44,7 +43,7 @@ public class Main {
 			System.out.println("GCF File Converter v. " + version + "\n");
 			System.out.println("Usage: java -jar gcfFileConverter.jar <mode> <prefix path> <clone file> [optional] [minline]\n");
 			System.out.println("   <mode>: 1=ccfx, 2=simscan, 3=CPD, 4=ConQAT, 5=iClones, "
-					+ "6=simian, 7=nicad, 8=deckard, 9=scc");
+					+ "6=simian, 7=nicad, 8=deckard, 9=scc, 10=ccaligner");
 			System.out.println("   <prefix_path>: the unwanted prefix path that you want to remove from the output file.");
 			System.out.println("   <clone_file>: the original clone file.");
 			System.out.println("   [optional]: for CCFX: location of ccfxpredir, for SourcererCC: location of the two header files.");
@@ -105,6 +104,10 @@ public class Main {
 				// Option 9 - SourcererCC
 				printHeader("SourcererCC");
 				processSCC(args);
+			} else if (mode.trim().matches("10") || mode.trim().matches("ccaligner")) {
+				// Option 10 - CCAligner
+				printHeader("CCAligner");
+				processCCAligner(args);
 			} else {
 				log.error("Incorrect tool specified: " + mode.trim() + ". Please check again.");
 				System.exit(-1);
@@ -443,11 +446,11 @@ public class Main {
 		
 		// remove the temp file
 		File tmpfile = new File(filename[0] + "temp.xml");
-		if (tmpfile.delete()) {
-			log.debug(tmpfile.getName() + " is deleted!");
-		} else {
-			log.error("Delete operation is failed.");
-		}
+//		if (tmpfile.delete()) {
+//			log.debug(tmpfile.getName() + " is deleted!");
+//		} else {
+//			log.error("Delete operation is failed.");
+//		}
 	}
 
 	public static ArrayList<String> readConvertedFile(String fileName) {
@@ -481,171 +484,7 @@ public class Main {
 	}
 
 	public static String converteToGCF(ArrayList<String> strlist) {
-		log.debug("in converteToGCF");
-		StringBuffer sbGCFfile = new StringBuffer();
-		sbGCFfile.append("<CloneClasses>\r\n");
-
-		int classIndex = 0;
-		int endclassIndex = 0;
-		boolean findclass = false;
-		boolean endclass = false;
-		int minimumLines = 0;
-		while (classIndex < strlist.size()) {
-			// System.out.println("classIndex=" + classIndex + ": " + strlist.get(classIndex));
-			if (strlist.get(classIndex).startsWith("<class")) {
-				String classInfo = strlist.get(classIndex);
-				endclassIndex = classIndex + 1;
-				endclass = false;
-
-				while (endclassIndex < strlist.size() && !endclass) {
-					if (strlist.get(endclassIndex).startsWith("</class>")) {
-						endclass = true;
-						findclass = true;
-						int i = 0;
-						int nfragment = 0;
-						String strid = "";
-						
-						while (i < classInfo.length()) {
-							if (classInfo.regionMatches(i, "id=", 0, 3)) {
-								int start = i + 4;
-								int j = start + 1;
-								boolean endid = false;
-								// finding id
-								while (j < classInfo.length() && !endid) {
-									if (classInfo.regionMatches(j, "\"", 0, 1)) {
-										endid = true;
-										i = j;
-										strid = classInfo.substring(start, j); 
-									} else {
-										j++;
-									}
-
-								}
-							}
-							
-							if (classInfo.regionMatches(i, "nfragments=", 0, 11)) {
-								int startfrag = i + 12;
-								int k = startfrag + 1;
-								boolean endfrag = false;
-								String strfrag = "";
-								while (k < classInfo.length() && !endfrag) {
-
-									if (classInfo.regionMatches(k, "\"", 0, 1)) {
-										endfrag = true;
-										i = k;
-										strfrag = classInfo.substring(
-												startfrag, k); // nfragments
-
-										nfragment = Integer.parseInt(strfrag);
-									} else {
-										k++;
-									}
-								}
-
-							}
-							i++;
-						}
-						
-						String tab = "    ";
-						sbGCFfile.append(tab + "<CloneClass>\r\n");
-						sbGCFfile.append(tab + "<ID>");
-						sbGCFfile.append(strid);
-						sbGCFfile.append("</ID>\r\n");
-						
-						int numf = nfragment;
-						int strindex = classIndex + 1;
-						while (numf > 0 && strindex < endclassIndex
-								&& strindex < strlist.size()) {
-							String strfragment = strlist.get(strindex);
-							String startline = "";
-							String endline = "";
-							String filepath = "";
-							if (strfragment.startsWith("<source file=")) {
-								int findex = 0;
-								while (findex < strfragment.length()) {
-									if (strfragment.regionMatches(findex,"file=", 0, 5)) {
-										int startf = findex + 6;
-										int endf = startf + 1;
-										boolean bendf = false;
-										while (endf < strfragment.length() && !bendf) {
-											if (strfragment.regionMatches(endf,"\"", 0, 1)) {
-												bendf = true;
-												filepath = strfragment.substring(startf, endf);
-												findex = endf;
-											} else {
-												endf++;
-											}
-										}
-									}
-									if (strfragment.regionMatches(findex, "startline=", 0, 10)) {
-										int startf = findex + 11;
-										int endf = startf + 1;
-										boolean bendf = false;
-										while (endf < strfragment.length() && !bendf) {
-											if (strfragment.regionMatches(endf, "\"", 0, 1)) {
-												bendf = true;
-												startline = strfragment.substring(startf, endf);
-												findex = endf;
-											} else {
-												endf++;
-											}
-										}
-									}
-									if (strfragment.regionMatches(findex, "endline=", 0, 8)) {
-										int startf = findex + 9;
-										int endf = startf + 1;
-										boolean bendf = false;
-										while (endf < strfragment.length() && !bendf) {
-											if (strfragment.regionMatches(endf, "\"", 0, 1)) {
-												bendf = true;
-												endline = strfragment.substring(startf, endf);
-												findex = endf;
-											} else {
-												endf++;
-											}
-										}
-									}
-									findex++;
-								}
-							}
-							sbGCFfile.append(tab + tab + "<Clone>\r\n");
-							sbGCFfile.append(tab + tab + tab + "<Fragment>\r\n");
-							sbGCFfile.append(tab + tab + tab + tab + "<File>");
-							// remove the unwanted prefix
-							sbGCFfile.append(filepath.replace(prefix, ""));
-							sbGCFfile.append("</File>\r\n");
-							sbGCFfile.append(tab + tab + tab + tab + "<Start>");
-							sbGCFfile.append(startline);
-							sbGCFfile.append("</Start>\r\n");
-							sbGCFfile.append(tab + tab + tab + tab + "<End>");
-							sbGCFfile.append(endline);
-							sbGCFfile.append("</End>\r\n");
-							sbGCFfile.append(tab + tab + tab + "</Fragment>\r\n");
-							sbGCFfile.append(tab + tab + "</Clone>\r\n");
-							
-							int lines = Integer.parseInt(endline) - Integer.parseInt(startline) + 1;
-							if (minimumLines == 0 || lines < minimumLines) {
-								minimumLines = lines;
-							}
-							strindex++;
-							numf--;
-						} 
-
-						if (findclass && endclass) {
-							sbGCFfile.append(tab + "</CloneClass>\r\n");
-						}
-						classIndex = endclassIndex;
-					} 
-					else {
-						endclassIndex++;
-					}
-				}
-			}
-			classIndex++;
-		}
-		sbGCFfile.append("</CloneClasses>\r\n");
-
-		return sbGCFfile.toString();
+		return converteToGCFmin(strlist, 0);
 	}
 
 	public static String converteToGCFmin(ArrayList<String> convertedFileLines, int minCloneLine) {
@@ -672,6 +511,7 @@ public class Main {
 						int i = 0;
 						int nfragment = 0;
 						String strid = "";
+						String similarity = "";
 
 						while (i < classInfo.length()) {
 							if (classInfo.regionMatches(i, "id=", 0, 3)) {
@@ -686,6 +526,23 @@ public class Main {
 										strid = classInfo.substring(start, j); 
 									} else 
 										j++;
+								}
+							}
+							
+							if (classInfo.regionMatches(i, "similarity=", 0, 11)) {
+								int start = i + 12;
+								int j = start + 1;
+								boolean endid = false;
+								// finding similarity
+								while (j < classInfo.length() && !endid) {
+									if (classInfo.regionMatches(j, "\"", 0, 1)) {
+										endid = true;
+										i = j;
+										similarity = classInfo.substring(start, j); 
+									} else {
+										j++;
+									}
+
 								}
 							}
 							
@@ -714,6 +571,9 @@ public class Main {
 						sb.append(tab + "<ID>");
 						sb.append(strid);
 						sb.append("</ID>\r\n");
+						sb.append(tab + "<Similarity>");
+						sb.append(similarity);
+						sb.append("</Similarity>\r\n");
 
 						int fragmentcountofclass = 0;
 						int numf = nfragment;
@@ -782,7 +642,6 @@ public class Main {
 							}
 
 							int lines = Integer.parseInt(endline) - Integer.parseInt(startline) + 1;
-							
 							// Only add clone to the result if the size is larger than minimum line
 							if (lines >= minCloneLine) {
 								fragmentcountofclass++;
@@ -1042,6 +901,41 @@ public class Main {
 		filename += "-GCF";
 		saveConvertedFile(filename + ".xml", GCFfile);
 		
+		// remove the temp file
+		File tmpfile = new File(tmpfileName);
+
+		if (tmpfile.delete()) {
+			log.debug(tmpfile.getName() + " is deleted!");
+		} else {
+			log.error("Delete operation is failed.");
+		}
+		log.debug("Creating GCF file at " + filename + ".xml");
+	}
+
+	private static void processCCAligner(String[] args) {
+		if (args.length < 2) {
+			log.debug("Please input the right paramenters");
+			log.debug("Usage: java -jar gcf_Fileconverter.jar <10 or ccaligner> "
+					+ "<clone_file>");
+			log.debug("Example: java -jar gcf_Fileconverter.jar ccaligner clones");
+			System.exit(-1);
+		}
+		// create an array list to store all clone fragments
+		ArrayList<String> argList = new ArrayList<String>();
+		for (int i=0; i<args.length; i++)
+			argList.add(args[i]);
+		String output = new FileConverterFactory().createFileConverter(IConstant.CCALIGNER_RESULT_FILE)
+				.convert(new File(cloneFile.trim()), argList);
+		String filename = cloneFile.trim();
+		String tmpfileName = filename + "_temp.xml";
+		saveConvertedFile(tmpfileName, output);
+		ArrayList<String> convertedFileLines = new ArrayList<String>();
+		convertedFileLines = readConvertedFile(tmpfileName);
+		String GCFfile = "";
+		GCFfile = converteToGCF(convertedFileLines);
+		filename += "-GCF";
+		saveConvertedFile(filename + ".xml", GCFfile);
+
 		// remove the temp file
 		File tmpfile = new File(tmpfileName);
 

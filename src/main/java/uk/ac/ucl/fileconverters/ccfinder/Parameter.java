@@ -1,4 +1,4 @@
-package fileconverters.ccfinder;
+package main.java.uk.ac.ucl.fileconverters.ccfinder;
 
 public interface Parameter {
 	public static final String SYS_NAME = "junit"; // requires

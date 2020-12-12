@@ -1,4 +1,4 @@
-package fileconverters;
+package uk.ac.ucl.fileconverters;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,6 @@ import java.util.HashMap;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.log4j.BasicConfigurator;
 
 public class FileConverterForSCC extends Fileconverters {
 	private static Logger log;

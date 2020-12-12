@@ -1,4 +1,4 @@
- package fileconverters.ccfinder;
+ package main.java.uk.ac.ucl.fileconverters.ccfinder;
 
 
 public class Convert {

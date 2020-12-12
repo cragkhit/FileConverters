@@ -1,4 +1,4 @@
-package fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
 /*
  * To change this template, choose Tools | Templates
@@ -6,14 +6,13 @@ package fileconverters;
  */
 
 /**
- *
  * @author parvez
  * @author Chaiyong
  */
 public class IConstant {
-    public static boolean readClonedCodeOnly =true;
-    public static boolean originalSource     =true;
-    
+    public static boolean readClonedCodeOnly = true;
+    public static boolean originalSource = true;
+
     //Constant related with Clone Detection Tool/File format
     public static final int VISCAD_INPUT_FILE = 1001;
     public static final int SIIMIAN_RESULT_FILE = 1002;
@@ -24,11 +23,12 @@ public class IConstant {
     public static final int CPD_RESULT_FILE = 1007;
     public static final int CONQAT_RESULT_FILE = 1008;
     public static final int DECKARD_RESULT_FILE = 1009;
-	public static final int SOURCERERCC_RESULT_FILE = 1010;
-    
-    //COnstants related with granularity of clone
+    public static final int SOURCERERCC_RESULT_FILE = 1010;
+    public static final int CCALIGNER_RESULT_FILE = 1011;
+
+    // Constants related with granularity of clone
     public static int GRANULARITY_FUNCTION = 2001;
     public static int GRANULARITY_BLOCK = 2002;
-    
-  
+
+
 }

@@ -1,4 +1,4 @@
-package fileconverters;
+package uk.ac.ucl.fileconverters;
 
 import java.io.File;
 import java.io.FileNotFoundException;

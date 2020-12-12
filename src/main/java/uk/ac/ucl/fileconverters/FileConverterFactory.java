@@ -1,6 +1,4 @@
-package fileconverters;
-
-import fileconverters.IConstant;
+package uk.ac.ucl.fileconverters;
 
 /*
  * To change this template, choose Tools | Templates

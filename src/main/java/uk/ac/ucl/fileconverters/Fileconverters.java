@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-/*package fileconverters;
+/*package main.java.uk.ac.ucl.fileconverters;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 //}
 
 
-package fileconverters;
+package uk.ac.ucl.fileconverters;
 
 
 import java.io.File;

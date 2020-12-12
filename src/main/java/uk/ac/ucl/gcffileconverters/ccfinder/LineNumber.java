@@ -1,9 +1,7 @@
-package fileconverters.ccfinder;
+package uk.ac.ucl.gcffileconverters.ccfinder;
 
 import java.io.*;
 import java.util.StringTokenizer;
-
-import fileconverters.Main;
 
 public class LineNumber {
     private String postfix;

@@ -1,4 +1,4 @@
-package fileconverters.ccfinder;
+package uk.ac.ucl.gcffileconverters.ccfinder;
 
 import java.io.*;
 

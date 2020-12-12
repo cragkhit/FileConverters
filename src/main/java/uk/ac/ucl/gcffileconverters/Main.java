@@ -1,6 +1,5 @@
-package fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
-import fileconverters.IConstant;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -32,7 +31,7 @@ public class Main {
 	public static String prefix = ""; 
 	private static String mode = "";
 	private static String minLine = "6";
-	private static String version = "0.6";
+	private static String version = "0.7";
 
 	public static void main(String args[]) {
 		// initialize log4j logger
@@ -44,7 +43,7 @@ public class Main {
 			System.out.println("GCF File Converter v. " + version + "\n");
 			System.out.println("Usage: java -jar gcfFileConverter.jar <mode> <prefix path> <clone file> [optional] [minline]\n");
 			System.out.println("   <mode>: 1=ccfx, 2=simscan, 3=CPD, 4=ConQAT, 5=iClones, "
-					+ "6=simian, 7=nicad, 8=deckard, 9=scc");
+					+ "6=simian, 7=nicad, 8=deckard, 9=scc, 10=ccaligner");
 			System.out.println("   <prefix_path>: the unwanted prefix path that you want to remove from the output file.");
 			System.out.println("   <clone_file>: the original clone file.");
 			System.out.println("   [optional]: for CCFX: location of ccfxpredir, for SourcererCC: location of the two header files.");
@@ -105,6 +104,10 @@ public class Main {
 				// Option 9 - SourcererCC
 				printHeader("SourcererCC");
 				processSCC(args);
+			} else if (mode.trim().matches("10") || mode.trim().matches("ccaligner")) {
+				// Option 10 - CCAligner
+				printHeader("CCAligner");
+				processCCAligner(args);
 			} else {
 				log.error("Incorrect tool specified: " + mode.trim() + ". Please check again.");
 				System.exit(-1);
@@ -898,6 +901,41 @@ public class Main {
 		filename += "-GCF";
 		saveConvertedFile(filename + ".xml", GCFfile);
 		
+		// remove the temp file
+		File tmpfile = new File(tmpfileName);
+
+		if (tmpfile.delete()) {
+			log.debug(tmpfile.getName() + " is deleted!");
+		} else {
+			log.error("Delete operation is failed.");
+		}
+		log.debug("Creating GCF file at " + filename + ".xml");
+	}
+
+	private static void processCCAligner(String[] args) {
+		if (args.length < 2) {
+			log.debug("Please input the right paramenters");
+			log.debug("Usage: java -jar gcf_Fileconverter.jar <10 or ccaligner> "
+					+ "<clone_file>");
+			log.debug("Example: java -jar gcf_Fileconverter.jar ccaligner clones");
+			System.exit(-1);
+		}
+		// create an array list to store all clone fragments
+		ArrayList<String> argList = new ArrayList<String>();
+		for (int i=0; i<args.length; i++)
+			argList.add(args[i]);
+		String output = new FileConverterFactory().createFileConverter(IConstant.CCALIGNER_RESULT_FILE)
+				.convert(new File(cloneFile.trim()), argList);
+		String filename = cloneFile.trim();
+		String tmpfileName = filename + "_temp.xml";
+		saveConvertedFile(tmpfileName, output);
+		ArrayList<String> convertedFileLines = new ArrayList<String>();
+		convertedFileLines = readConvertedFile(tmpfileName);
+		String GCFfile = "";
+		GCFfile = converteToGCF(convertedFileLines);
+		filename += "-GCF";
+		saveConvertedFile(filename + ".xml", GCFfile);
+
 		// remove the temp file
 		File tmpfile = new File(tmpfileName);
 

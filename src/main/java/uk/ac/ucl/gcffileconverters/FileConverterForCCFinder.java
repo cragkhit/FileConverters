@@ -1,6 +1,7 @@
-package fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
-import fileconverters.ccfinder.CCFXCloneProcessor;
+import uk.ac.ucl.gcffileconverters.ccfinder.CCFXCloneProcessor;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

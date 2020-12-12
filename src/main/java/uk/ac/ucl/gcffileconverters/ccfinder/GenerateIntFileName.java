@@ -1,4 +1,4 @@
-package fileconverters.ccfinder;
+package uk.ac.ucl.gcffileconverters.ccfinder;
 
 public class GenerateIntFileName {
 	private String postfix;

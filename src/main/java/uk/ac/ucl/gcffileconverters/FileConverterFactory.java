@@ -1,6 +1,4 @@
-package fileconverters;
-
-import fileconverters.IConstant;
+package uk.ac.ucl.gcffileconverters;
 
 /*
  * To change this template, choose Tools | Templates
@@ -38,6 +36,8 @@ public class FileConverterFactory {
 			fc = new FileConverterForDeckard();
 		} else if (type == IConstant.SOURCERERCC_RESULT_FILE) {
 			fc = new FileConverterForSCC();
+		} else if (type == IConstant.CCALIGNER_RESULT_FILE) {
+			fc = new FileConverterForCCAligner();
 		}
 
 		return fc;

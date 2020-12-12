@@ -2,21 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package fileconverters;
+package uk.ac.ucl.gcffileconverters;
 
 import de.uni_bremen.st.rcf.persistence.*;
 import de.uni_bremen.st.rcf.model.*;
-import de.uni_bremen.st.rcf.util.*;
-import de.uni_bremen.st.rcf.schema.AttributeType;
-import de.uni_bremen.st.rcf.persistence.AbstractRelationBinding;
 import de.uni_bremen.st.rcf.persistence.AbstractPersistenceManager;
-import java.util.List;
+
 import java.util.ArrayList;
-
-
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

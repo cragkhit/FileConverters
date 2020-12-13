@@ -36,6 +36,8 @@ public class FileConverterFactory {
 			fc = new FileConverterForDeckard();
 		} else if (type == IConstant.SOURCERERCC_RESULT_FILE) {
 			fc = new FileConverterForSCC();
+		} else if (type == IConstant.CCALIGNER_RESULT_FILE) {
+			fc = new FileConverterForCCAligner();
 		}
 
 		return fc;
